@@ -6,6 +6,5 @@ export const environment = {
   //remoto
   // apiUrl: "https://svcbmf.org/backend-api/public/api",
   // apiUrlMedia: "https://svcbmf.org/backend-api/storage/app/",
-  clientId: 'AQhKPBY5mgg0JustLJCcf6ncmd9RghCiNhXT_b6rNUakyQtnEn8MzCn_dkHAyt5n7_P0Omo5M05to5j0'//malcolm sandbox
 
 };
