@@ -1,0 +1,155 @@
+<div class="row page-titles">
+    <div class="col-12 animated fadeInLeft">
+        <div class="card cardtop">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12 col-md-10 align-self-center">
+                        <h3 class="text-themecolor">{{pageTitle}}</h3>
+                    </div>
+                    <div class="col-12 col-sm-2">
+                        <button class="btn btn-outline-danger" href="javascript:void(0)" (click)="goBack()">Volver</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="row">
+    <div class="col-12 animated fadeInUp">
+        <div class="card">
+            <div class="card-body afiliaciones-form">
+                <form [formGroup]="afiliacionesForm" (ngSubmit)="onSubmit()" class="form-horizontal form-material">
+                    <div class="row">
+                        <div class="form-group col-12 col-sm-6">
+                            <label>Nombres <span class="required">*</span></label>
+                            <div class="col-12">
+                                <input type="text" formControlName="nombres" class="form-control" placeholder="nombres" required>
+                                <div *ngIf="nombres.invalid && (nombres.dirty || nombres.touched)" class="error">
+                                    <div *ngIf="nombres.errors">
+                                        Titulo es Requerido.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-12 col-sm-6">
+                            <label>Apellidos <span class="required">*</span></label>
+                            <div class="col-12">
+                                <input type="text" formControlName="apellidos" class="form-control" placeholder="apellidos" required>
+                                <div *ngIf="apellidos.invalid && (apellidos.dirty || apellidos.touched)" class="error">
+                                    <div *ngIf="apellidos.errors">
+                                        Titulo es Requerido.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-12 col-sm-6">
+                            <label>Título <span class="required">*</span></label>
+                            <div class="col-12">
+                                <input type="text" formControlName="titulo" class="form-control" placeholder="titulo" required>
+                                <div *ngIf="titulo.invalid && (titulo.dirty || titulo.touched)" class="error">
+                                    <div *ngIf="titulo.errors">
+                                        Titulo es Requerido.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-12 col-sm-6">
+                            <label>universidad <span class="required">*</span></label>
+                            <div class="col-12">
+                                <input type="text" formControlName="universidad" class="form-control" placeholder="universidad" required>
+                                <div *ngIf="universidad.invalid && (universidad.dirty || universidad.touched)" class="error">
+                                    <div *ngIf="universidad.errors">
+                                        Titulo es Requerido.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-12 col-sm-6">
+                            <label>Graduacion <span class="required">*</span></label>
+                            <div class="col-12">
+                                <input type="text" formControlName="graduacion" class="form-control" placeholder="graduacion" required>
+                                <div *ngIf="graduacion.invalid && (graduacion.dirty || graduacion.touched)" class="error">
+                                    <div *ngIf="nombres.errors">
+                                        Titulo es Requerido.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-12 col-sm-6">
+                            <label>estado <span class="required">*</span></label>
+                            <div class="col-12">
+                                <input type="text" formControlName="estado" class="form-control" placeholder="estado" required>
+                                <div *ngIf="estado.invalid && (estado.dirty || estado.touched)" class="error">
+                                    <div *ngIf="estado.errors">
+                                        Titulo es Requerido.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-12 col-sm-6">
+                            <label>ciudad <span class="required">*</span></label>
+                            <div class="col-12">
+                                <input type="text" formControlName="ciudad" class="form-control" placeholder="ciudad" required>
+                                <div *ngIf="ciudad.invalid && (ciudad.dirty || ciudad.touched)" class="error">
+                                    <div *ngIf="ciudad.errors">
+                                        Titulo es Requerido.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-12 col-sm-6">
+                            <label>telefono <span class="required">*</span></label>
+                            <div class="col-12">
+                                <input type="text" formControlName="telefonos" class="form-control" placeholder="telefonos" required>
+                                <div *ngIf="telefonos.invalid && (telefonos.dirty || telefonos.touched)" class="error">
+                                    <div *ngIf="telefonos.errors">
+                                        Titulo es Requerido.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-12 col-sm-6">
+                            <label>email <span class="required">*</span></label>
+                            <div class="col-12">
+                                <input type="text" formControlName="email" class="form-control" placeholder="email" required>
+                                <div *ngIf="email.invalid && (email.dirty || email.touched)" class="error">
+                                    <div *ngIf="email.errors">
+                                        Titulo es Requerido.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-12 col-sm-6" *ngFor="let afiliacione of afiliaciones; let i = index">
+                            <label class="col-md-3">Nombre del Archivo</label>
+                            <div class="col-12">
+                                <p>{{afiliacione.archivo}}</p>
+                            </div>
+                        </div>
+                        <div class="form-group col-12 col-sm-6">
+                            <label class="col-md-3">Subir pdf</label>
+                            <div class="col-12">
+                                <input type="file" name="arcivo" id="archivo" (change)="onSelectedFile($event)" accept="pdf/*" />
+
+                            </div>
+                        </div>
+
+                        <div class="form-group col-12 ">
+                            <div>
+                                <input type="hidden" formControlName="id">
+                                <button type="submit" [disabled]="!afiliacionesForm.valid" class="btn btn-outline-success">Guardar</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+
+            </div>
+            {{error}}
+        </div>
+    </div>
+</div>

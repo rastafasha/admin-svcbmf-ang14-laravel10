@@ -1,0 +1,11 @@
+
+@media (min-width: 768px) {
+    .col-md-6 {
+        float: left;
+        padding: 5px;
+    }
+    .col-md-3 {
+        height: 100vh;
+    }
+    
+}

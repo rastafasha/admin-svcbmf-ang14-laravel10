@@ -1,0 +1,49 @@
+<div class="row page-titles">
+    <div class="col-12 animated fadeInLeft">
+        <div class="card cardtop">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12 col-md-10 align-self-center">
+                        <h3 class="text-themecolor">{{title}}</h3>
+                    </div>
+                    <div class="col-12 col-sm-2">
+                        <button class="btn btn-outline-danger" href="javascript:void(0)" (click)="goBack()">Volver</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-12">
+        <div class="animated fadeInUp">
+            <div class="card">
+                <div class="card-body" *ngIf="trabajos$ | async as trabajos  ">
+                    <div class="row">
+                        <div class="col-12 col-sm-6">
+                            <a href="{{trabajos.archivo}}" target="_blank">
+                                <img src="./assets/img/pdf-icon.png" style="display: block; margin:auto; width: 40%;">
+                                <div class="text-center">
+                                    <button class="btn btn-success">ver archivo</button>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-12 col-sm-6">
+                            <h2>Datos Personales</h2>
+                            <p><b>Nombre:</b> {{trabajos.nombre}}</p>
+                            <p><b>Apellido:</b> {{trabajos.apellido}}</p>
+                            <p><b>Cédula o pasaporte:</b> {{trabajos.cedulapassport}}</p>
+                            <p><b>Teléfono:</b> {{trabajos.telefono}}</p>
+                            <p><b>email:</b> {{trabajos.email}}</p>
+                            <p><b>Observaciones:</b> {{trabajos.observaciones}}</p>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

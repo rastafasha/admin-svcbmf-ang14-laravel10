@@ -1,0 +1,89 @@
+<div class="row page-titles">
+    <div class="col-12 animated fadeInUp">
+        <div class="card cardtop">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12 col-sm-2">
+                        <h3 class="text-themecolor">{{title}}</h3>
+                    </div>
+                    <div class="buscador col-xs-12 col-sm-8 ">
+                        <form class="form-horizontal">
+                            <div class="p-1 bg-light rounded rounded-pill shadow-sm mb-4">
+                                <div class="input-group">
+                                    <input type="search" name="search" #input (keyup)="search(input.value)" type="text" class="form-control col-xs-12" placeholder="Buscar.." aria-describedby="button-addon1" class="form-control border-0 bg-light">
+                                    <div class="input-group-append">
+                                        <button id="button-addon1" type="submit" class="btn btn-link text-primary" (click)="search(input.value)" name="submit" data-toggle="tooltip" title="mostrar todos"><i class="fa fa-search"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-12 col-sm-2 botones">
+                        <button class="btn btn-outline-danger" href="javascript:void(0)" (click)="goBack()">Volver</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="container">
+
+
+    <div class="row">
+        <div class=" col-12">
+            <div class="row">
+                <div class="clear"></div>
+
+                <!--Including the pagination control.-->
+                <div class="col-xs-12 col-sm-12 mt-4 mb-4">
+                    <div class="text-center">
+                        <pagination-controls (pageChange)="p = $event" responsive="true" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
+                    </div>
+                </div>
+                <div class="clear"></div>
+                <div class="col-xs-12 col-sm-6 col-md-4 fr-view card-m" *ngFor="let doctores of doctores.doctores | keys | paginate: { itemsPerPage: count, currentPage: p }">
+                    <div class=" card " style="padding: 10px; border-radius: 10px;">
+                        <div class="carbodymovil">
+                            <div class="col-xs-12">
+                                <div class="elementos">
+
+                                    <div class="infodir">
+                                        <p>Nombre</p>
+                                        <h5>{{doctores.nombre}}</h5>
+                                        <p>surname</p>
+                                        <h5>{{doctores.surname}}</h5>
+                                        <p>email</p>
+                                        <h5>{{doctores.email}}</h5>
+                                    </div>
+                                    <div class="botonesss">
+                                        <button class="btn btn-outline-danger" (click)="onDelete(doctores.id)"><i class="fa fa-trash"></i>Borrar</button>
+
+                                        <!-- <button type="button" class="btn btn-outline-primary" data-toggle="modal" [attr.data-target]="'#' + doctores.id"> -->
+                                        <!-- <button type="button" class="btn btn-outline-primary" (click)="openModal(doctores.id)">
+                                          <i class="fa fa-eye"></i>View
+                                          </button> -->
+                                        <a [routerLink]="['/directorio/edit', doctores.id]"><button class="btn  btn-outline-primary"><i class="fa fa-pencil"></i>Editar </button></a>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!---modal-->
+                    <app-modal [(visible)]="mostrarform" [directorios]="directorios" [draggable]="false" [modal]="true" header="Asignar Evaluador" (onHide)="CerrarModal()" *ngIf="mostrarform"></app-modal>
+
+
+                    <!---fin modal-->
+
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

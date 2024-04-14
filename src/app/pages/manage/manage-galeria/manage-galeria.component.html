@@ -1,0 +1,49 @@
+<div class="row ">
+    <div class="col-12 animated fadeInUp">
+        <div class="card cardtop">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12 col-sm-8 align-self-center">
+                        <h3 class="text-themecolor">{{title}}</h3>
+                    </div>
+                    <div class="col-12 col-sm-4 botones pull-right">
+                        <button class="btn btn-outline-danger" href="javascript:void(0)" (click)="goBack()">Volver</button>
+                        <button class="btn btn-success" [routerLink]="['/dashboard/galeria/create/']">Agregar Nuevo</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <!--Including the pagination control.-->
+    <div class="row ">
+        <div class="text-center mt-4 mb-4">
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div class="row">
+        <div class="col-12 col-sm-3 fr-view" *ngFor="let galeria of galerias | keys | paginate: { itemsPerPage: count, currentPage: p }">
+            <div class="card ">
+                <div class="card-body">
+                    <img src="{{galeria.image}}" style="display: block; width: 90%; margin-bottom: 10px;">
+
+                    <button class="btn btn-sm btn-outline-danger" (click)="onDelete(galeria.id)"><i class="fa fa-trash"></i>Borrar</button>
+                    <a [routerLink]="['/dashboard/galeria/edit', galeria.id]"><button class="btn btn-sm btn-outline-success"><i class="fa fa-pencil"></i>Editar </button></a>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="clear"></div>
+    <!--Including the pagination control.-->
+    <div class="row ">
+        <div class="text-center mt-4 mb-4">
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,101 @@
+<div class="row page-titles">
+    <div class="col-12 animated fadeInLeft">
+        <div class="card cardtop">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12 col-md-10 align-self-center">
+                        <h3 class="text-themecolor">{{pageTitle}}</h3>
+                    </div>
+                    <div class="col-12 col-sm-2">
+                        <button class="btn btn-outline-danger" href="javascript:void(0)" (click)="goBack()">Volver</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="row">
+    <div class="col-12 animated fadeInUp">
+        <div class="card">
+            <div class="card-body blog-form">
+                <!-- <form [formGroup]="userForm" (ngSubmit)="save()" class="form-horizontal form-material">
+                    <div class="row">
+                        <div class="form-group col-12 col-sm-6">
+                            <label>Nombre <span class="required">*</span></label>
+                            <div>
+                                <input type="text" formControlName="first_name" class="form-control" placeholder="Nombre" required>
+                                <div *ngIf="first_name.invalid && (first_name.dirty || first_name.touched)" class="error">
+                                    <div *ngIf="first_name.errors">
+                                        Nombre es Requerido.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-12 col-sm-6">
+                            <label>Apellido <span class="required">*</span></label>
+                            <div>
+                                <input type="text" formControlName="last_name" class="form-control" placeholder="Apellido" required>
+                                <div *ngIf="last_name.invalid && (last_name.dirty || last_name.touched)" class="error">
+                                    <div *ngIf="last_name.errors">
+                                        Apellido es Requerido.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-12 col-sm-6">
+                            <label>Nombre de Usuario <span class="required">*</span></label>
+                            <div>
+                                <input type="text" formControlName="username" class="form-control" placeholder="Usuario" required>
+                                <div *ngIf="username.invalid && (username.dirty || username.touched)" class="error">
+                                    <div *ngIf="username.errors">
+                                        Usuario es Requerido.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-12 col-sm-6">
+                            <label>Rol</label>
+                            <div>
+                                <input type="radio" formControlName="role" value="admin" /> Admin
+                                <input type="radio" formControlName="role" value="editor" /> Editor
+                            </div>
+                        </div>
+                        <div class="form-group col-12 col-sm-6">
+                            <label>Activo</label>
+                            <div>
+                                <input type="radio" formControlName="is_active" value="1" /> Yes
+                                <input type="radio" formControlName="is_active" value="0" /> No
+                            </div>
+                        </div>
+                        <div class="form-group col-12 col-sm-6">
+                            <label>Subir Imagen</label>
+                            <div>
+                                <input type="file" id="image" (change)="onSelectedFile($event)" />
+                                <div [innerHTML]="uploadError" class="error"></div>
+                                <div *ngIf="imagePath">
+                                    <br />
+                                    <img [src]="imagePath" width="100px">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                        <div class="form-group form-row">
+                            <div class="col-12">
+                                <input type="hidden" formControlName="id">
+                                <button type="submit" [disabled]="!userForm.valid" class="btn btn-outline-success">Guardar</button>
+                            </div>
+                        </div>
+                    </div>
+                </form> -->
+
+
+            </div>
+            {{error}}
+        </div>
+    </div>
+</div>

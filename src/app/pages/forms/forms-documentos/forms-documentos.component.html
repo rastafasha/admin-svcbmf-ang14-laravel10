@@ -1,0 +1,68 @@
+<div class="row page-titles">
+    <div class="col-12 animated fadeInLeft">
+        <div class="card cardtop">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12 col-md-10 align-self-center">
+                        <h3 class="text-themecolor">{{pageTitle}}</h3>
+                    </div>
+                    <div class="col-12 col-sm-2">
+                        <button class="btn btn-outline-danger" href="javascript:void(0)" (click)="goBack()">Volver</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="row">
+    <div class="col-12 animated fadeInUp">
+        <div class="card">
+            <div class="card-body afiliaciones-form">
+                <form [formGroup]="documentoForm" (ngSubmit)="onSubmit()" class="form-horizontal form-material">
+                    <div class="row">
+
+                        <div class="form-group col-12 col-sm-6">
+                            <label>Título <span class="required">*</span></label>
+                            <div class="col-12">
+                                <input type="text" formControlName="titulo" class="form-control" placeholder="titulo" required>
+                                <div *ngIf="titulo.invalid && (titulo.dirty || titulo.touched)" class="error">
+                                    <div *ngIf="titulo.errors">
+                                        Titulo es Requerido.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-12 col-sm-6" *ngFor="let documento of documentos; let i = index">
+                            <label class="col-md-3">Nombre del Archivo</label>
+                            <div class="col-12">
+                                <p>{{documento.archivo}}</p>
+                            </div>
+                        </div>
+                        <div class="form-group col-12 col-sm-6">
+                            <label class="col-md-3">Subir pdf</label>
+                            <div class="col-12">
+                                <input type="file" name="arcivo" id="archivo" (change)="onSelectedFile($event)" accept="pdf/*" />
+
+                            </div>
+                        </div>
+
+                        <div class="form-group col-12 ">
+                            <div>
+                                <input type="hidden" formControlName="id">
+                                <button type="submit" [disabled]="!documentoForm.valid" class="btn btn-outline-success">Guardar</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+
+            </div>
+            {{error}}
+        </div>
+    </div>
+</div>

@@ -1,0 +1,109 @@
+<div class="row page-titles">
+    <div class="col-12 animated fadeInLeft">
+        <div class="card cardtop">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12 col-md-10 align-self-center">
+                        <h3 class="text-themecolor">{{pageTitle}}</h3>
+                    </div>
+                    <div class="col-12 col-sm-2">
+                        <button class="btn btn-outline-danger" href="javascript:void(0)" (click)="goBack()">Volver</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="row">
+    <div class="col-12 animated fadeInUp">
+        <div class="card">
+            <div class="card-body blog-form">
+                <form [formGroup]="configForm" (ngSubmit)="onSubmit()" class="form-horizontal form-material">
+                    <div class="form-group form-row">
+                        <label class="col-md-3">Dirección <span class="required">*</span></label>
+                        <div class="col-md-9">
+                            <ckeditor  (ready)="onReady($event)" data="<p>Hello, world!</p>" formControlName="direccion" rows="5" class="form-control" required></ckeditor>
+                            <div *ngIf="direccion.invalid && (direccion.dirty || direccion.touched)" class="error">
+                                <div *ngIf="direccion.errors">
+                                    Dirección es Requerido.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group form-row">
+                        <div class=" form-group col-sm-6 col-xs-12">
+                            <label>Teléfono </label>
+                            <input type="text" formControlName="telefono" class="form-control" placeholder="Title">
+                        </div>
+                        <div class=" form-group col-sm-6 col-xs-12">
+                            <label>Teléfono Activo</label>
+                            <div class="col-md-9 demo-radio-button">
+                                <input type="radio" class="radio-col-green " formControlName="telefonoActivo" value="displayBlok" mdbInput> Yes
+                                <input type="radio" class="radio-col-red" formControlName="telefonoActivo" value="displayNone" mdbInput> No
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group form-row">
+                        <div class=" form-group col-sm-6 col-xs-12">
+                            <label>Teléfono Presidencia </label>
+                            <input type="text" formControlName="telPresidencia" class="form-control" placeholder="Title">
+                        </div>
+                        <div class=" form-group col-sm-6 col-xs-12">
+                            <label>Teléfono Presidencia Activo</label>
+                            <div class="col-md-9 demo-radio-button">
+                                <input type="radio" class="radio-col-green " formControlName="telPresActivo" value="displayBlok" mdbInput> Yes
+                                <input type="radio" class="radio-col-red" formControlName="telPresActivo" value="displayNone" mdbInput> No
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group form-row">
+                        <div class=" form-group col-sm-6 col-xs-12">
+                            <label>Teléfono Secretaría</label>
+                            <input type="text" formControlName="telSecretaria" class="form-control" placeholder="Title">
+                        </div>
+                        <div class=" form-group col-sm-6 col-xs-12">
+                            <label>Teléfono Secretaría Activo</label>
+                            <div class="col-md-9 demo-radio-button">
+                                <input type="radio" class="radio-col-green " formControlName="telSecActivo" value="displayBlok" mdbInput> Yes
+                                <input type="radio" class="radio-col-red" formControlName="telSecActivo" value="displayNone" mdbInput> No
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group form-row">
+                        <div class=" form-group col-sm-6 col-xs-12">
+                            <label>Teléfono Tesorería</label>
+                            <input type="text" formControlName="telTesoreria" class="form-control" placeholder="Title">
+                        </div>
+                        <div class=" form-group col-sm-6 col-xs-12">
+                            <label>Teléfono Tesorería Activo</label>
+                            <div class="col-md-9 demo-radio-button">
+                                <input type="radio" class="radio-col-green " formControlName="telTesActivo" value="displayBlok" mdbInput> Yes
+                                <input type="radio" class="radio-col-red" formControlName="telTesActivo" value="displayNone" mdbInput> No
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group form-row">
+                        <label class="col-md-3"></label>
+                        <div class="col-md-9">
+                            <input type="hidden" formControlName="id">
+                            <button type="submit" [disabled]="!configForm.valid" class="btn btn-outline-success">Guardar</button>
+                        </div>
+                    </div>
+                </form>
+
+
+            </div>
+            {{error}}
+        </div>
+    </div>
+</div>

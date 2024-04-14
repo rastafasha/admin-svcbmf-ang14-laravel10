@@ -1,0 +1,81 @@
+<div class="row page-titles">
+    <div class="col-12 animated fadeInLeft">
+        <div class="card cardtop">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12 col-md-10 align-self-center">
+                        <h3 class="text-themecolor">{{pageTitle}}</h3>
+                    </div>
+                    <div class="col-12 col-sm-2">
+                        <button class="btn btn-outline-danger" href="javascript:void(0)" (click)="goBack()">Volver</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-12 animated fadeInUp">
+
+        <div class="card">
+
+
+            <div class="card-body blog-form">
+                <form [formGroup]="ceoForm" (ngSubmit)="onSubmit(ceoForm)" class="form-horizontal form-material">
+
+                    <div class="gridform">
+                        <div class="form-group ">
+                            <label>Nombre </label>
+                            <div class="col-md-9">
+                                <input type="text" formControlName="name" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <label>Cargo  </label>
+                            <div class="col-md-9">
+                                <input type="text" formControlName="cargoceo_name" class="form-control">
+                            </div>
+                        </div>
+                        <!--div class="form-group ">
+                            <div class="col-md-12">
+                                <label>Cargo</label>
+                                <select formControlName="cargo_id" class="form-control">
+                                <option *ngFor="let car of cargo " value="{{car.id}}">
+                                  {{car.name}}
+                                </option>
+                              </select>
+                            </div>
+                        </div-->
+                        <div class="form-group ">
+                            <label>Subir Imagen (peso max: 500kb)</label>
+                            <div class="col-xs-12">
+                                <input type="file" id="image" (change)="onSelectedFile($event)" />
+                                <div [innerHTML]="uploadError" class="error"></div>
+                                <div *ngIf="imagePath">
+                                    <br />
+                                    <img [src]="imagePath">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group form-row">
+                        <label class="col-md-3"></label>
+                        <div class="col-md-9">
+                            <input type="hidden" formControlName="id">
+                            <button type="submit" [disabled]="!ceoForm.valid" class="btn btn-outline-success">Guardar</button>
+                        </div>
+                    </div>
+                </form>
+
+
+            </div>
+            <div class="d-block mt-3 text-danger">
+                {{error}}
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,108 @@
+<!-- =======| Main |======= -->
+<div class="container " id="main" class="main" role="main ">
+    <div class="col-xs-12 ">
+        <!-- Page Title -->
+        <div class="pagetitle animated fadeIn">
+            <div class="left">
+                <h1><i class="bx bxs-user-account"></i> {{title}}</h1>
+                <nav>
+                    <ol class="breadcrumb">
+                        <!-- <li class="breadcrumb-item"><a routerLink="/"><i class="bi bi-house"></i> Inicio</a></li> -->
+                        <li class="breadcrumb-item active">{{title}}</li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="right shadow animated fadeIn">
+                
+                <div *ngIf="user.roles[0] == 'ADMIN'">
+                    <p>Plan: Admin </p>
+                    <span class="badge bg-success">Activo</span>
+                </div>
+                <div *ngIf="user.roles[0] == 'SUPERADMIN'">
+                    <p>Plan: SuperAdmin </p>
+                    <span class="badge bg-success">Activo</span>
+                </div>
+            </div>
+        </div>
+        <!-- <div *ngIf="user.role == 'SUPERADMIN'">
+            <app-graficas></app-graficas>
+        </div> -->
+        <div *ngIf="user.roles[0] == 'SUPERADMIN'|| user.roles[0] == 'ADMIN'">
+            <!-- <app-bannerplanes></app-bannerplanes> -->
+        </div>
+        <!-- banners planes -->
+        <!-- banners planes -->
+
+
+        <div class="clear"></div>
+        <!-- acceso iconos -->
+        <app-menuiconos></app-menuiconos>
+        <!-- acceso iconos -->
+
+        <!-- End Page Title -->
+
+        <section class="section dashboard">
+
+            <div class="row">
+                <div class=" col-xs-12 col-sm-4 col-xl-4">
+
+                    <div class="card profile  animated fadeInUp shadow">
+
+                        <div class="card-body profile-card pt-4   fichasmall">
+                            
+                            <div class="inffichasmall">
+                                <!-- <img [src]="userprofile.directories[0].image | imagenPipe: 'users'" [alt]="user.username" class="rounded-circle"> -->
+                                <p>!Hola!:</p>
+                                <h4>{{user.name}}</h4>
+                                <!-- <p>Usuario desde:<br>{{user.created_at | date:'MMM d, y, h:mm:ss a'}}</p> -->
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+                <div class=" col-xs-12 col-sm-8 col-xl-8">
+
+                    <div class="card  animated fadeInUp shadow">
+                        <div class="card-body pt-3">
+                            <h2>Recientes</h2>
+                            <!-- Bordered Tabs -->
+                            <ul class="nav nav-tabs nav-tabs-bordered">
+
+                                <li class="nav-item">
+                                    <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#recentPayments">Transacciones</button>
+                                </li>
+                                <li class="nav-item">
+                                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#status">Usuarios</button>
+                                </li>
+
+
+                            </ul>
+                            <div class="tab-content pt-2">
+
+                                <div class="tab-pane fade show active news" id="recentPayments">
+                                    <br />
+                                </div>
+                                <div class="tab-pane fade profile-edit pt-3" id="status">
+                                    <app-usuarios-recientes></app-usuarios-recientes>
+                                </div>
+
+
+                            </div>
+                            <!-- End Bordered Tabs -->
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <app-directorio></app-directorio>
+
+
+</div>
+<!--/main-->
+<div class="clear"></div>

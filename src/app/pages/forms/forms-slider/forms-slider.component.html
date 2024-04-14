@@ -1,0 +1,133 @@
+<div class="row page-titles">
+    <div class="col-12 animated fadeInLeft">
+        <div class="card cardtop">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12 col-md-10 align-self-center">
+                        <h3 class="text-themecolor">{{pageTitle}}</h3>
+                    </div>
+                    <div class="col-12 col-sm-2">
+                        <button class="btn btn-outline-danger" href="javascript:void(0)" (click)="goBack()">Volver</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="row">
+    <div class="col-12 animated fadeInUp">
+        <div class="card">
+            <div class="card-body slider-form">
+                <form [formGroup]="sliderForm" (ngSubmit)="onSubmit()" class="form-horizontal form-material">
+                    <div class="row">
+
+                    <div class=" form-group col-xs-12 col-sm-3 ">
+                        <label >Mostrar Slider</label>
+                        <div class="col-xs-12 col-sm-3 demo-radio-button">
+                            <input type="radio" class="radio-col-green " formControlName="is_active" value="1" mdbInput> Si
+                            <input type="radio" class="radio-col-red" formControlName="is_active" value="0" mdbInput> No
+                        </div>
+                    </div>
+
+                    <div class="form-group col-xs-12 col-sm-3 ">
+                        <label >Mostrar texto</label>
+                        <div class="col-xs-12 col-sm-3">
+                            <input type="radio" formControlName="is_activeText" value="displayBlok" /> Yes
+                            <input type="radio" formControlName="is_activeText" value="displayNone" /> No
+                        </div>
+                    </div>
+                    <div class=" form-group col-xs-12 col-sm-3 ">
+                        <label >Mostrar Boton</label>
+                        <div class="col-md-9 demo-radio-button">
+                            <input type="radio" class="radio-col-green " formControlName="is_activeBot" value="displayBlok" mdbInput> Si
+                            <input type="radio" class="radio-col-red" formControlName="is_activeBot" value="displayNone" mdbInput> No
+                        </div>
+                    </div>
+                    <div class=" form-group col-xs-12 col-sm-3 ">
+                        <label >Abrir enlace</label>
+                        <div class="col-md-9 demo-radio-button">
+                            <input type="radio" class="radio-col-green " formControlName="target" value="_blank" mdbInput> Externo
+                            <input type="radio" class="radio-col-red" formControlName="target" value="_self" mdbInput> interno
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-12 col-sm-4 ">
+                        <label >Título </label>
+                        <div class="col-md-9">
+                            <input type="text" formControlName="title" class="form-control" placeholder="Title">
+
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-12 col-sm-4 ">
+                        <label >Título Boton <span class="required">*</span></label>
+                        <div class="col-md-9">
+                            <input type="text" formControlName="boton" class="form-control" placeholder="Title" required>
+                            <div *ngIf="boton.invalid && (boton.dirty || boton.touched)" class="error">
+                                <div *ngIf="boton.errors">
+                                    Titulo es Requerido.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-12 col-sm-4 ">
+                        <label >Enlace Boton <span class="required">*</span></label>
+                        <div class="col-md-9">
+                            <input type="text" formControlName="enlace" class="form-control" placeholder="enlace" required>
+                            <div *ngIf="enlace.invalid && (enlace.dirty || enlace.touched)" class="error">
+                                <div *ngIf="enlace.errors">
+                                    enlace es Requerido.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-12 col-sm-6 ">
+                        <label >Imagen Fondo (peso max: 500kb | medidas max: 1920x1080px)</label>
+                        <div class="col-xs-12 col-sm-6">
+                            <input type="file" id="image" (change)="onSelectedFile($event)" />
+                            <div [innerHTML]="uploadError" class="error"></div>
+                            <div *ngIf="imagePath">
+                                <br />
+                                <img [src]="imagePath" width="100px">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-12 col-sm-6 ">
+                        <label >Imagen Fondo Version movil (peso max: 500kb | medidas max: 1920x1080px)</label>
+                        <div class="col-xs-12 col-sm-6">
+                            <input type="file" id="imagemovil" (change)="onSelectedFile2($event)" />
+                            <div [innerHTML]="uploadError" class="error"></div>
+                            <div *ngIf="imagePath2">
+                                <br />
+                                <img [src]="imagePath2" width="100px">
+                            </div>
+                        </div>
+                    </div>
+
+                   
+                    
+                    <div class="form-group col-xs-12  ">
+                        <label >Descripción </label>
+                        <div class="col-xs-12">
+                            <ckeditor  (ready)="onReady($event)" data="<p>Hello, world!</p>" formControlName="description" rows="5" class="form-control" placeholder="Description"></ckeditor>
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <label ></label>
+                        <div class="col-md-9">
+                            <input type="hidden" formControlName="id">
+                            <button type="submit" [disabled]="!sliderForm.valid" class="btn btn-outline-success">Guardar</button>
+                        </div>
+                    </div>
+                    </div>
+
+                </form>
+
+
+            </div>
+            {{error}}
+        </div>
+    </div>
+</div>

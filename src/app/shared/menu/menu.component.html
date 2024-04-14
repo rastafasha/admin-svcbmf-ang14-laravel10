@@ -1,0 +1,186 @@
+<!-- ============================================================== -->
+<!-- Left Sidebar - style you can find in sidebar.scss  -->
+<!-- ============================================================== -->
+<aside class="left-sidebar">
+    <!-- Sidebar scroll-->
+    <div class="scroll-sidebar">
+        <!-- Sidebar navigation-->
+        <nav class="sidebar-nav">
+            <ul id="sidebar-nav">
+                <li class="nav-item">
+                    <a class="nav-link collapsed cursor" routerLink="/">
+                        <i class="fa fa-home"></i>
+                        <span>Inicio</span>
+                    </a>
+                </li>
+                <!-- End Dashboard Nav -->
+
+                <!-- menu superadmin y admin -->
+
+                <div *ngIf="user.roles[0] === 'SUPERADMIN' || user.roles[0] === 'ADMIN' ">
+
+                    <li class="nav-item">
+                        <a class="nav-link collapsed cursor" routerLink="/dashboard/users" routerLinkActive="active">
+                            <i class="fa fa-users"></i>
+                            <span>Usuarios</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link collapsed cursor" routerLink="/dashboard/directorio" routerLinkActive="active">
+                            <i class="fa fa-bookmark"></i>
+                            <span>Directorio</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link collapsed cursor" routerLink="/dashboard/afiliaciones" routerLinkActive="active">
+                            <i class="fa fa-bookmark"></i>
+                            <span>afiliaciones</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link collapsed cursor" routerLink="/dashboard/ceo" routerLinkActive="active">
+                            <i class="fa fa-bookmark"></i>
+                            <span>Directiva</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link collapsed cursor" routerLink="/dashboard/dirregional" routerLinkActive="active">
+                            <i class="fa fa-bookmark"></i>
+                            <span>Directiva Regional</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link collapsed cursor" routerLink="/dashboard/fotoceo" routerLinkActive="active">
+                            <i class="fa fa-bookmark"></i>
+                            <span>Foto Ppal. Directiva</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link collapsed cursor" routerLink="/dashboard/blog" routerLinkActive="active">
+                            <i class="fa fa-bookmark"></i>
+                            <span>Blog</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link collapsed cursor" routerLink="/dashboard/pacientes" routerLinkActive="active">
+                            <i class="fa fa-bookmark"></i>
+                            <span>Tips Pacientes </span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link collapsed cursor" routerLink="/dashboard/formacion" routerLinkActive="active">
+                            <i class="fa fa-bookmark"></i>
+                            <span>Serv. Formación  </span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link collapsed cursor" routerLink="/dashboard/documentos" routerLinkActive="active">
+                            <i class="fa fa-bookmark"></i>
+                            <span>Documentos </span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link collapsed cursor" routerLink="/dashboard/galeria" routerLinkActive="active">
+                            <i class="fa fa-bookmark"></i>
+                            <span>Galería Histórica </span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link collapsed cursor" routerLink="/dashboard/aliados" routerLinkActive="active">
+                            <i class="fa fa-bookmark"></i>
+                            <span>Logos Aliados</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link collapsed cursor" routerLink="/dashboard/banner-cuadrado" routerLinkActive="active">
+                            <i class="fa fa-bookmark"></i>
+                            <span>Bann Cuadrado </span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link collapsed cursor" routerLink="/dashboard/banner-horizontal" routerLinkActive="active">
+                            <i class="fa fa-bookmark"></i>
+                            <span>Bann Horizontal </span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link collapsed cursor" routerLink="/dashboard/banner-vertical" routerLinkActive="active">
+                            <i class="fa fa-bookmark"></i>
+                            <span>Bann Vertical  </span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link collapsed cursor" routerLink="/dashboard/revista" routerLinkActive="active">
+                            <i class="fa fa-bookmark"></i>
+                            <span>Revista  </span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link collapsed cursor" routerLink="/dashboard/slider" routerLinkActive="active">
+                            <i class="fa fa-bookmark"></i>
+                            <span>Slider Home  </span>
+                        </a>
+                    </li>
+                <!--Otras menu-->
+
+
+                    <li class="nav-item">
+                        <a class="nav-link collapsed cursor" [routerLink]="['/dashboard/profile/', user.id]" routerLinkActive="active">
+                            <i class="fa fa-user-md"></i>
+                            <span>Mi Cuenta</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link collapsed cursor" routerLink="/dashboard/configuraciones" routerLinkActive="active">
+                            <i class="fa fa-cogs"> </i>
+                            <span>Configuraciones</span>
+                        </a>
+                    </li>
+                    <!-- End Payments Page Nav -->
+                </div>
+
+                <!-- menu superadmin y admin -->
+                <!-- End Payments Page Nav -->
+                <!-- todos -->
+                <li class="nav-item">
+                    <a class="nav-link collapsed cursor" routerLink="/dashboard/help" routerLinkActive="active">
+                        <i class="fa fa-ambulance"></i>
+                        <span>Ayuda</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link collapsed cursor" routerLink="/dashboard/install-pwa" routerLinkActive="active">
+                        <i class="fa fa-mobile"></i>
+                        <span>Instalar PWA</span>
+                    </a>
+                </li>
+                <!-- End F.A.Q Page Nav -->
+
+                <li class="nav-item">
+                    <a class="nav-link collapsed cursor" routerLink="/dashboard/contact" routerLinkActive="active">
+                        <i class="fa fa-envelope"></i>
+                        <span>Contacto</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link collapsed cursor" (click)="logout()">
+                        <i class="fa fa-power-off"></i>
+                        <span>Salir</span>
+                    </a>
+                </li>
+                <!-- End Contact Page Nav -->
+
+
+            </ul>
+        </nav>
+        <!-- End Sidebar navigation -->
+    </div>
+    <!-- End Sidebar scroll-->
+    <!-- ============================================================== -->
+
+</aside>
+<!-- ============================================================== -->
+<!-- End Left Sidebar - style you can find in sidebar.scss  -->
+<!-- ============================================================== -->
+

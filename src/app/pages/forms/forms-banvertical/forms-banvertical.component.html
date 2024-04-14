@@ -1,0 +1,96 @@
+<div class="row page-titles">
+    <div class="col-12 animated fadeInLeft">
+        <div class="card cardtop">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12 col-md-10 align-self-center">
+                        <h3 class="text-themecolor">{{pageTitle}}</h3>
+                    </div>
+                    <div class="col-12 col-sm-2">
+                        <button class="btn btn-outline-danger" href="javascript:void(0)" (click)="goBack()">Volver</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="row">
+    <div class="col-12 animated fadeInUp">
+        <div class="card">
+            <div class="card-body blog-form">
+                <form [formGroup]="verticalForm" (ngSubmit)="onSubmit()" class="form-horizontal form-material">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6">
+                            <div class="form-group form-row">
+                                <label class="col-xs-12">Título <span class="required">*</span></label>
+                                <div class="col-xs-12">
+                                    <input type="text" formControlName="titulo" class="form-control" placeholder="Title" required>
+                                    <div *ngIf="titulo.invalid && (titulo.dirty || titulo.touched)" class="error">
+                                        <div *ngIf="titulo.errors">
+                                            Titulo es Requerido.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group form-row">
+                                <label class="col-xs-12">Enlace <span class="required">*</span></label>
+                                <div class="col-xs-12">
+                                    <input type="text" formControlName="enlace" class="form-control" placeholder="Enlace" required>
+                                    <div *ngIf="enlace.invalid && (enlace.dirty || enlace.touched)" class="error">
+                                        <div *ngIf="enlace.errors">
+                                            Enlace es Requerido.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group form-row">
+                                <label class="col-xs-12">Target</label>
+                                <div class="col-xs-12">
+                                    <input type="radio" formControlName="target" value="_self" /> Enlace Interno
+                                    <input type="radio" formControlName="target" value="_blank" /> Enlace Externo
+                                </div>
+                            </div>
+
+                            <div class="form-group form-row">
+                                <label class="col-xs-12">Activo</label>
+                                <div class="col-xs-12">
+                                    <input type="radio" formControlName="is_active" value="1" /> Si
+                                    <input type="radio" formControlName="is_active" value="0" /> No
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6">
+                            <div class="form-group form-row">
+                                <label class="col-xs-12">Subir Imagen (peso max: 500kb | medidas: 300x600px)</label>
+                                <div class="col-xs-12">
+                                    <input type="file" id="image" (change)="onSelectedFile($event)" />
+                                    <div [innerHTML]="uploadError" class="error"></div>
+                                    <div *ngIf="imagePath">
+                                        <br />
+                                        <img [src]="imagePath" width="40%" class="shadow">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="form-group form-row">
+                        <label class="col-md-3"></label>
+                        <div class="col-md-9">
+                            <input type="hidden" formControlName="id">
+                            <button type="submit" [disabled]="!verticalForm.valid" class="btn btn-outline-success">Guardar</button>
+                        </div>
+                    </div>
+                </form>
+
+
+            </div>
+            {{error}}
+        </div>
+    </div>
+</div>

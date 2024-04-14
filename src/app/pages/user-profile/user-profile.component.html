@@ -1,0 +1,265 @@
+<!-- =======| Main |======= -->
+<div class="container animated fadeInUp" id="main" class="main" role="main" name="profile">
+
+    <div class="col-xs-12">
+        <div class="leftside">
+            <!-- Page Title -->
+            <div class="pagetitle">
+                <h1><i class="bx bxs-user-account"></i> {{title}}</h1>
+                <nav>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a routerLink="/"><i class="fa fa-home"></i> Inicio</a></li>
+                        <li class="breadcrumb-item active">{{title}}</li>
+                    </ol>
+                </nav>
+            </div>
+            <!-- End Page Title -->
+        </div>
+        <div class="buton">
+            <button class="btn btn-outline-danger pull-right" href="javascript:void(0)" (click)="goBack()">Volver</button>
+        </div>
+        <div class="clear"></div>
+
+        <section class="section profile">
+            <div class="row">
+                <div class="col-xl-3">
+
+                    <div class="card">
+                        <div class="card-body profile-card pt-4  fichasmall">
+                            <div *ngIf="userdirectory">
+                                <div *ngIf="!userdirectory.image">
+                                    <div *ngIf="!userdirectory.image">
+                                        <img src="./assets/images/no-image.jpg" class="rounded-circle">
+                                    </div>
+                                </div>
+                                <div *ngIf="userdirectory.image">
+                                    <img [src]="userdirectory.image | imagenPipe: 'directories'" [alt]="user.name" class="rounded-circle">
+                                </div>
+                            </div>
+                            
+                            <div class="inffichasmall">
+                                <h2>{{userprofile.name}}</h2>
+                                <p>{{userprofile.email}}</p>
+
+                                <span class="badge bg-dark-light" *ngIf="userprofile.roles === 'SUPERADMIN'">SuperAdmin</span>
+                                <span class="badge bg-primary" *ngIf="userprofile.roles === 'ADMIN'">Admin</span>
+                                <span class="badge bg-success" *ngIf="userprofile.roles === 'MEMBER'">Miembro</span>
+                                <span class="badge bg-secondary" *ngIf="userprofile.roles === 'GUEST'">Invitado</span>
+
+                                <a [routerLink]="['/dashboard/rolesconf']">
+                                    <button class="btn btn-success">Modificar Rol</button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card" *ngIf="userdirectory">
+                        <div class="card-body  pt-4 d-flex flex-column align-items-center">
+
+                            <div class="imgqr">
+                                <qr-code class="code" id="box" [value]="userprofile.directories[0].vcard" [size]="230">
+                                    <img style="margin: auto;">
+                                </qr-code>
+                                <div class="clear"></div>
+                                <br>
+
+                                <!-- <a class="btn btn-outline-primary" [href]="href" (click)="downloadImage()" download="QR_SVCBMF_{{directory.nombre}}_{{directory.surname}}"><i class="fa fa-download"></i> Descargar QR</a> -->
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-xl-9">
+
+                    <div class="card">
+                        <div class="card-body pt-3">
+                            <!-- Bordered Tabs -->
+                            <ul class="nav nav-tabs nav-tabs-bordered">
+                                <li class="nav-item">
+                                    <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#historial">Historial Pagos</button>
+                                </li>
+                                <li class="nav-item">
+                                    <button class="nav-link " data-bs-toggle="tab" data-bs-target="#detalle">Detalles Directorio</button>
+                                </li>
+                            </ul>
+                            <div class="tab-content pt-2">
+
+                                <div class="tab-pane fade show active historial" id="historial">
+                                    <div class="cout">
+                                        <div class="card cardgridd shadow col-xs-12 col-sm-6" *ngFor="let payment of userpayments |  paginate: { itemsPerPage: count, currentPage: p }" >
+                                            <div class="card-body">
+                                                <div class="topee">
+                                                    <div class="refe">
+                                                        <h4>Referencia</h4>
+                                                        <p>
+                                                            <a [routerLink]="['/dashboard/payment-detail', payment.id]">{{payment.referencia}}</a>
+                                                        </p>
+                                                    </div>
+                                                    <div class="sta">
+                                                        <h4>Status</h4>
+                                                    <span class="badge bg-success" *ngIf="payment.status === 'APPROVED'">Aprobado</span>
+                                                          <span class="badge bg-primary" *ngIf="payment.status === 'PENDING'">Pendiente</span>
+                                                          <span class="badge bg-danger" *ngIf="payment.status === 'REJECTED'">Rechazado</span>
+                                                    </div>
+                                                </div>
+                                                <div class="dat">
+                                                    <h4>Fecha</h4>
+                                                      <p>
+                                                        {{payment.created_at | date:'MMM d, y, h:mm:ss a'}}
+                                                      </p>
+                                                </div>
+                                               
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+
+
+                                </div>
+
+                                <div class="tab-pane fade detail  pt-3" id="detalle">
+
+
+                                    <div *ngIf="!userdirectory">
+                                        <p>No posee directorio</p>
+                                    </div>
+                                    <div class="col-xs-12">
+                                        <div *ngIf="userdirectory">
+                                            <div class="row records">
+                                                <div class="col-xs-6 col-sm-6 col-md-4 b-r">
+                                                    <div class="col-12  label"><i class="bi bi-person-circle"></i> Nombre</div>
+                                                    <div class="col-12  info">{{userdirectory.nombre}}</div>
+                                                </div>
+                                                <div class="col-xs-6 col-sm-6 col-md-4 b-r">
+                                                    <div class="col-12  label"><i class="bi bi-person-circle"></i> Apellido</div>
+                                                    <div class="col-12  info">{{userdirectory.surname}}</div>
+                                                </div>
+
+
+                                                <div class="col-xs-6 col-sm-6 col-md-4 b-r esp">
+                                                    <div class="col-12  label"><i class="bi  bi-award"></i> Especialidad</div>
+                                                    <div class="col-12 info">{{userdirectory.especialidad}} </div>
+                                                </div>
+                                            </div>
+                                            <hr>
+
+                                            <div class="row records">
+                                                <div class="col-xs-6 col-sm-6 col-md-4 b-r">
+                                                    <div class="col-12  label"><i class="bi bi-bank2"></i> Universidad</div>
+                                                    <div class="col-12  info">{{userdirectory.universidad}}</div>
+                                                </div>
+                                                <div class="col-xs-6 col-sm-6 col-md-4 b-r">
+                                                    <div class="col-12  label"><i class="bi  bi-award"></i> Año</div>
+                                                    <div class="col-12  info">{{userdirectory.ano}}</div>
+                                                </div>
+                                                <div class="col-xs-6 col-sm-6 col-md-4 b-r esp">
+                                                    <div class="col-12  label"><i class="bi bi-geo"></i> Website</div>
+                                                    <div class="col-12  info">
+                                                        <a href="{{userdirectory.website}}" target="_blank">
+
+                                                  {{userdirectory.website}}
+                                                </a>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <hr>
+                                            <div class="row phones">
+                                                <div class="col-xs-6 col-sm-6 col-md-3 b-r">
+                                                    <div class="col-12  label"><i class="bi bi-telephone"></i> Principal</div>
+                                                    <div class="col-12  info">
+                                                        <a href="tel:{{userdirectory.telprincipal}}" target="_blank">
+                                                {{userdirectory.telprincipal}}
+                                                </a>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-6 col-sm-6 col-md-3 b-r">
+                                                    <div class="col-12  label"><i class="bi bi-telephone"></i> Móvil</div>
+
+                                                    <div class="col-12  info">
+                                                        <a href="tel:{{userdirectory.telmovil}}" target="_blank">
+                                                  {{userdirectory.telmovil}}
+                                                </a>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-6 col-sm-6 col-md-3 b-r">
+                                                    <div class="col-12  label"><i class="bi bi-telephone"></i> Oficina / Casa</div>
+                                                    <div class="col-12  info">
+                                                        <a href="tel:{{userdirectory.telhome}}" target="_blank">
+                                                  {{userdirectory.telhome}}
+                                                </a>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-6 col-sm-6 col-md-3 b-r">
+                                                    <div class="col-12  label"><i class="bi bi-telephone"></i> Adicional</div>
+                                                    <div class="col-12  info">
+                                                        <a href="tel:{{userdirectory.tel1}}" target="_blank">
+                                                  {{userdirectory.tel1}}
+                                                </a>
+                                                    </div>
+                                                </div>
+                                                <!-- <div class="col-xs-12 col-sm-6 col-md-3 b-r">
+                                                    <div class="col-12  label"><i class="bi bi-telephone"></i> Otros Telefonos</div>
+                                                    <div class="col-12 info">{{userdirectory.telefonos}}</div>
+                                                </div> -->
+                                            </div>
+                                            <hr>
+                                            <div class="row">
+                                                
+                                                <div class="col-xs-6 col-sm-6 col-md-3 b-r">
+                                                    <div class="col-12  label"><i class="bi bi-geo"></i> Estado</div>
+                                                    <div class="col-12  info">{{userdirectory.estado}}</div>
+                                                </div>
+                                                <div class="col-xs-12 col-sm-6 col-md-3 b-r">
+                                                    <div class="col-12  label"><i class="bi bi-file-text"></i> Dirección</div>
+                                                    <div class="col-12  info">
+                                                        <p>{{userdirectory.direccion}}</p>
+
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-12 col-sm-6 col-md-3 b-r">
+                                                    <div class="col-12  label"><i class="bi bi-file-text"></i> Dir. Adicional</div>
+                                                    <div class="col-12  info">
+                                                        <p>{{userdirectory.direccion1}}</p>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <hr>
+                                            <div class="row socialicos">
+                                                <div *ngIf="userdirectory.facebook && !undefined" class="col-xs-12 col-sm-6 col-md-3 b-r">
+                                                    <div class="col-12  label"><i class="fa fa-facebook"></i> Facebook</div>
+                                                    <div class="col-12 info">{{userdirectory.facebook}}</div>
+                                                </div>
+                                                <div *ngIf="userdirectory.instagram && !undefined" class="col-xs-6 col-sm-6 col-md-3 b-r">
+                                                    <div class="col-12  label"><i class="fa fa-instagram"></i> Instagram</div>
+                                                    <div class="col-12  info">{{userdirectory.instagram}}</div>
+                                                </div>
+                                                <div *ngIf="userdirectory.linkedin && !undefined" class="col-xs-12 col-sm-6 col-md-3 b-r">
+                                                    <div class="col-12  label"><i class="fa fa-linkedin"></i> Linkedin</div>
+                                                    <div class="col-12  info">{{userdirectory.linkedin}}</div>
+                                                </div>
+                                                <div *ngIf="userdirectory.twitter && !undefined" class="col-xs-12 col-sm-6 col-md-3 b-r">
+                                                    <div class="col-12  label"><i class="fa fa-twitter"></i> Twitter</div>
+                                                    <div class="col-12  info">{{userdirectory.twitter}}</div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End Bordered Tabs -->
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </div>
+
+</div>
+<!--/main-->

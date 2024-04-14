@@ -1,0 +1,62 @@
+<div class="row page-titles">
+    <div class="col-12 animated fadeInUp">
+        <div class="card cardtop">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12 col-sm-8 align-self-center">
+                        <h3 class="text-themecolor">{{title}}</h3>
+                    </div>
+                    <div class="col-12 col-sm-4 botones pull-right">
+                        <button class="btn btn-outline-danger" href="javascript:void(0)" (click)="goBack()">Volver</button>
+                        <button class="btn btn-success" [routerLink]="['/dashboard/configuracion/create/']">Agregar Nuevo</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ============================================================== -->
+<!-- Activity widget find scss into widget folder-->
+<!-- ============================================================== -->
+<div class="row">
+    <div class="card col-12 animated fadeInUp">
+        <div class="card-body">
+            <div class="table-responsive">
+
+                <table id="demo-foo-addrow" class="table m-t-30 table-hover contact-list footable-loaded footable">
+                    <thead>
+                        <tr class="text-center">
+                            <th class="footable-sortable">No<span class="footable-sort-indicator"></span></th>
+                            <th class="footable-sortable">Direccion<span class="footable-sort-indicator"></span></th>
+                            <th class="footable-sortable">Telf Presidencia<span class="footable-sort-indicator"></span></th>
+                            <th class="footable-sortable">Telf Secretaria<span class="footable-sort-indicator"></span></th>
+                            <th class="footable-sortable">Telf Tesorería<span class="footable-sort-indicator"></span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="footable-even" *ngFor="let configuracion of configuracions | keys | paginate: { itemsPerPage: count, currentPage: p }">
+                            <td><span class="footable-toggle"></span>{{configuracion.id}}</td>
+                            <td>{{configuracion.direccion}}</td>
+                            <td>{{configuracion.telPresidencia}}</td>
+                            <td>{{configuracion.telSecretaria}}</td>
+                            <td>{{configuracion.telTesoreria}}</td>
+                            <td>
+                                <button class="btn btn-sm btn-outline-danger" (click)="onDelete(configuracion.id)"><i class="fa fa-trash"></i>Borrar</button>
+                                <a [routerLink]="['/dashboard/configuracion/edit', configuracion.id]"><button class="btn btn-sm btn-outline-success"><i class="fa fa-pencil"></i>Editar </button></a>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                    <tfoot>
+                        <tr>
+
+                            <td colspan="7">
+                                <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

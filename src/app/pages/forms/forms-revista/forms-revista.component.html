@@ -1,0 +1,95 @@
+<div class="row page-titles">
+    <div class="col-12 animated fadeInLeft">
+        <div class="card cardtop">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12 col-md-10 align-self-center">
+                        <h3 class="text-themecolor">{{pageTitle}}</h3>
+                    </div>
+                    <div class="col-12 col-sm-2">
+                        <button class="btn btn-outline-danger" href="javascript:void(0)" (click)="goBack()">Volver</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body revista-form">
+                <form [formGroup]="revistaForm" (ngSubmit)="onSubmit()" class="form-horizontal form-material">
+                    <div class="row">
+                        <div class="form-group col-12 col-sm-4">
+                            <label>Volumen <span class="required">*</span></label>
+                            <div>
+                                <input type="text" formControlName="volumen" class="form-control" placeholder="volumen" required>
+                                <div *ngIf="volumen.invalid && (volumen.dirty || volumen.touched)" class="error">
+                                    <div *ngIf="volumen.errors">
+                                        Volumen es Requerido.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-12 col-sm-4">
+                            <label>Fecha <span class="required">*</span></label>
+                            <div>
+                                <input type="text" formControlName="fecha" class="form-control" placeholder="fecha" required>
+                                <div *ngIf="fecha.invalid && (fecha.dirty || fecha.touched)" class="error">
+                                    <div *ngIf="fecha.errors">
+                                        Volumen es Requerido.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-12 col-sm-4">
+                            <label>Número <span class="required">*</span></label>
+                            <div>
+                                <input type="text" formControlName="numero" class="form-control" placeholder="numero" required>
+                                <div *ngIf="numero.invalid && (numero.dirty || numero.touched)" class="error">
+                                    <div *ngIf="numero.errors">
+                                        Volumen es Requerido.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-12 col-sm-6">
+                            <label>Subir Imagen</label>
+                            <div>
+                                <input type="file" id="image" (change)="onSelectedFile($event)" />
+                                <div [innerHTML]="uploadError" class="error"></div>
+                                <div *ngIf="imagePath">
+                                    <br />
+                                    <img [src]="imagePath" width="100px">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-12 col-sm-6">
+                            <label>Subir archivo pdf</label>
+                            <div>
+                                <input type="file" id="archivo" (change)="onSelectedPdf($event)" />
+                                <div [innerHTML]="uploadError" class="error"></div>
+                                <div *ngIf="filePath">
+                                    <br />
+                                    <img [src]="filePath" width="100px">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group ">
+                            <div class="col-md-9">
+                                <input type="hidden" formControlName="id">
+                                <button type="submit" [disabled]="!revistaForm.valid" class="btn btn-outline-success">Guardar</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+
+            </div>
+            {{error}}
+        </div>
+    </div>
+</div>

@@ -1,0 +1,69 @@
+<div class="row page-titles">
+    <div class="col-12 animated fadeInLeft">
+        <div class="card cardtop">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12 col-md-10 align-self-center">
+                        <h3 class="text-themecolor">{{pageTitle}}</h3>
+                    </div>
+                    <div class="col-12 col-sm-2">
+                        <button class="btn btn-outline-danger" href="javascript:void(0)" (click)="goBack()">Volver</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="row">
+    <div class="col-12 animated fadeInUp">
+        <div class="card">
+            <div class="card-body blog-form">
+                <form [formGroup]="newsinstForm" (ngSubmit)="onSubmit()" class="form-horizontal form-material">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12">
+
+                            <div class="form-group form-row">
+                                <label class="col-xs-12 ">Activo</label>
+                                <div class="col-md-12">
+                                    <input type="radio" formControlName="isActive" value="1" /> Yes
+                                    <input type="radio" formControlName="isActive" value="0" /> No
+                                </div>
+                            </div>
+                            <div class="form-group form-row">
+                                <label class="col-xs-12">Codigo de plugin <span class="required">*</span></label>
+                                <div class="col-md-12">
+                                    <input type="text" formControlName="code" class="form-control" placeholder="Code" required>
+                                    <div *ngIf="code.invalid && (code.dirty || code.touched)" class="error">
+                                        <div *ngIf="code.errors">
+                                            Code es Requerido.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12  col-sm-12">
+                            <div class="form-group form-row">
+                                <label class="col-md-3"></label>
+                                <div class="col-md-9">
+                                    <input type="hidden" formControlName="id">
+                                    <button type="submit" [disabled]="!newsinstForm.valid" class="btn btn-outline-success">Guardar</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+                </form>
+
+
+            </div>
+            {{error}}
+        </div>
+    </div>
+</div>

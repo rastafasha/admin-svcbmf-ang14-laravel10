@@ -1,0 +1,65 @@
+<div class="row page-titles">
+    <div class="col-12 animated fadeInUp">
+        <div class="card cardtop">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12 col-sm-8 align-self-center">
+                        <h3 class="text-themecolor">{{title}}</h3>
+                    </div>
+                    <div class="col-12 col-sm-4 botones pull-right">
+                        <button class="btn btn-outline-danger" href="javascript:void(0)" (click)="goBack()">Volver</button>
+                        <button class="btn btn-success" [routerLink]="['/dashboard/revista/create/']">Agregar Nuevo</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ============================================================== -->
+<!-- Activity widget find scss into widget folder-->
+<!-- ============================================================== -->
+<div class="row">
+    <div class="card col-12 animated fadeInUp">
+        <div class="card-body">
+            <div class="table-responsive">
+
+                <table id="demo-foo-addrow" class="table m-t-30 table-hover contact-list footable-loaded footable">
+                    <thead>
+                        <tr class="text-center">
+                            <th class="footable-sortable">No<span class="footable-sort-indicator"></span></th>
+                            <th class="footable-sortable">imagen<span class="footable-sort-indicator"></span></th>
+                            <th class="footable-sortable">Archivo<span class="footable-sort-indicator"></span></th>
+                            <th class="footable-sortable">Volumen<span class="footable-sort-indicator"></span></th>
+                            <th class="footable-sortable">Número<span class="footable-sort-indicator"></span></th>
+                            <th class="footable-sortable">Fecha<span class="footable-sort-indicator"></span></th>
+                            <th class="footable-sortable">Acciones<span class="footable-sort-indicator"></span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="footable-even" *ngFor="let revista of revistas | keys | paginate: { itemsPerPage: count, currentPage: p }">
+                            <td><span class="footable-toggle"></span>{{revista.id}}</td>
+                            <td><img src="{{revista.image}}" alt="user" width="40" height="40"></td>
+                            <td>{{revista.archivo}}</td>
+                            <td>{{revista.volumen}}</td>
+                            <td>{{revista.numero}}</td>
+                            <td>{{revista.fecha}}</td>
+                            <td>
+                                <button class="btn btn-sm btn-outline-danger" (click)="onDelete(revista.id)"><i class="fa fa-trash"></i>Borrar</button>
+                                <a [routerLink]="['/dashboard/revista/edit', revista.id]"><button class="btn btn-sm btn-outline-success"><i class="fa fa-pencil"></i>Editar </button></a>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                    <tfoot>
+                        <tr>
+
+                            <td colspan="7">
+                                <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

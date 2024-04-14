@@ -1,0 +1,65 @@
+<div class="row page-titles">
+    <div class="col-12 animated fadeInUp">
+        <div class="card cardtop">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12 col-sm-8 align-self-center">
+                        <h3 class="text-themecolor">{{title}}</h3>
+                    </div>
+                    <div class="col-12 col-sm-4 botones pull-right">
+                        <button class="btn btn-outline-danger" href="javascript:void(0)" (click)="goBack()">Volver</button>
+                        <button class="btn btn-success" [routerLink]="['/dashboard/banner-horizontal/create/']">Agregar Nuevo</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ============================================================== -->
+<!-- Activity widget find scss into widget folder-->
+<!-- ============================================================== -->
+<div class="row">
+    <div class="card col-12 animated fadeInUp">
+        <div class="card-body">
+            <div class="table-responsive">
+
+                <table id="demo-foo-addrow" class="table m-t-30 table-hover contact-list footable-loaded footable">
+                    <thead>
+                        <tr class="text-center">
+                            <th class="footable-sortable">No<span class="footable-sort-indicator"></span></th>
+                            <th class="footable-sortable">imagen<span class="footable-sort-indicator"></span></th>
+                            <th class="footable-sortable">Título<span class="footable-sort-indicator"></span></th>
+                            <th class="footable-sortable">Enlace<span class="footable-sort-indicator"></span></th>
+                            <th class="footable-sortable">Abre<span class="footable-sort-indicator"></span></th>
+                            <th class="footable-sortable">Activo<span class="footable-sort-indicator"></span></th>
+                            <th class="footable-sortable">Acciones<span class="footable-sort-indicator"></span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="footable-even" *ngFor="let banhorizontal of banhorizontals | keys | paginate: { itemsPerPage: count, currentPage: p }">
+                            <td><span class="footable-toggle"></span>{{banhorizontal.id}}</td>
+                            <td><img src="{{banhorizontal.image}}" width="120" height="40"></td>
+                            <td>{{banhorizontal.titulo}}</td>
+                            <td>{{banhorizontal.enlace}}</td>
+                            <td>{{banhorizontal.target}}</td>
+                            <td>{{banhorizontal.is_active}}</td>
+                            <td>
+                                <button class="btn btn-sm btn-outline-danger" (click)="onDelete(banhorizontals.id)"><i class="fa fa-trash"></i>Borrar</button>
+                                <a [routerLink]="['/dashboard/banner-horizontal/edit', banhorizontal.id]"><button class="btn btn-sm btn-outline-success"><i class="fa fa-pencil"></i>Editar </button></a>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                    <tfoot>
+                        <tr>
+
+                            <td colspan="7">
+                                <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

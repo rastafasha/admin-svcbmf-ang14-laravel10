@@ -1,0 +1,61 @@
+<div class="row page-titles">
+    <div class="col-12 animated fadeInUp">
+        <div class="card cardtop">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12 col-sm-8 align-self-center">
+                        <h3 class="text-themecolor">{{title}}</h3>
+                    </div>
+                    <div class="col-12 col-sm-4 botones pull-right">
+                        <button class="btn btn-outline-danger" href="javascript:void(0)" (click)="goBack()">Volver</button>
+                        <button class="btn btn-success" [routerLink]="['/dashboard/afiliaciones/create/']">Agregar Nuevo</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Including the pagination control.-->
+<div class="row ">
+    <div class="text-center mt-4 mb-4">
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12 col-sm-3" *ngFor="let afiliacione of afiliaciones | keys | paginate: { itemsPerPage: count, currentPage: p }">
+        <div class="card ">
+            <div class="card-body">
+                <div class="d-flex">
+                    <h5 class="card-title"><span class="lstick"></span>{{afiliacione.nombres}} {{afiliacione.apellidos}}</h5>
+                    <!-- <span class="badge badge-success">9</span> -->
+                    <div class="btn-group ml-auto m-t-10">
+                        <a href="JavaScript:void(0)" class="icon-options-vertical link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
+                        <div class="dropdown-menu dropdown-menu-right" x-placement="bottom-end" style="position: absolute; transform: translate3d(-110px, 16px, 0px); top: 0px; left: 0px; will-change: transform;">
+                            <a class="dropdown-item" [routerLink]="['/dashboard/afiliaciones/edit', afiliacione.id]">Editar</a>
+                            <a class="dropdown-item" (click)="onDelete(afiliacione.id)">Borrar</a>
+                        </div>
+                    </div>
+                </div>
+                <img src="./assets/img/pdf-icon.png" width="60" height="60">
+                <!--img src="assets/img/logo.png"-->
+                <p><i class="fa fa-laptop"></i>{{afiliacione.universidad}}</p>
+                <p><i class="fa fa-envelope"></i>{{afiliacione.graduacion}}</p>
+                <p><i class="fa fa-map-marker"></i>{{afiliacione.estado}}</p>
+                <p><i class="fa fa-map-marker"></i>{{afiliacione.ciudad}}</p>
+                <p><i class="fa fa-map-marker"></i>{{afiliacione.telefonos}}</p>
+                <a href="{{afiliacione.archivo}}" target="_blank">
+                    <button class="btn btn-primary btn-block"> PDF {{afiliaciones.archivo}}</button>
+                </a>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="clear"></div>
+<!--Including the pagination control.-->
+<div class="row ">
+    <div class="text-center mt-4 mb-4">
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
+</div>

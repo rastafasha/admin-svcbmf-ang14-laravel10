@@ -1,0 +1,80 @@
+.historial ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: block;
+    margin: auto;
+}
+
+.imgqr {
+    display: flex;
+    flex-direction: column;
+}
+
+.cout{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.cardgridd{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.topee {
+    display: flex;
+    justify-content: space-between;  
+    border-bottom: 1px dashed #ccc;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+}
+
+@media(min-width:1024px) {
+    .detail .col-sm-8,
+    .detail .col-sm-4 {
+        float: left;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap-reverse;
+    }
+    .detail .col-sm-8 {
+        display: flex;
+        flex-direction: column;
+        align-content: flex-end;
+    }
+    .detail .label {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        font-family: var(--bold);
+    }
+    .detail .label i {
+        margin-right: 5px;
+        color: var(--azul);
+    }
+    .detail .info {
+        display: flex;
+        flex-direction: row;
+        margin-left: 22px;
+    }
+}
+
+@media(max-width:480px){
+    .socialicos,
+    .phones {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr );
+    }
+    .records {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr );
+    }
+
+    .esp{
+        grid-area: 2 / 4 / 2 / 1;
+    }
+}
