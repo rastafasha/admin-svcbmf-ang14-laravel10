@@ -19,6 +19,14 @@ export class FormsAliadosComponent implements OnInit {
 
   aliadoForm: UntypedFormGroup;
 
+  user: any;
+  user_id: any;
+  public FILE_AVATAR:any;
+  public IMAGE_PREVISUALIZA:any ;
+  valid_form:boolean = false;
+  valid_form_success:boolean = false;
+  text_validation:any = null;
+
   constructor(
     private fb: UntypedFormBuilder,
     private aliadoService: AliadoService,
@@ -28,6 +36,10 @@ export class FormsAliadosComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    let USER = localStorage.getItem("user");// se solicita el usuario logueado
+    this.user = JSON.parse(USER ? USER: ''); //  si no hay un usuario en el localstorage retorna un objeto vacio
+    this.user_id = this.user.id;  //se asigna el doctor logueado a este campo para poderlo enviar en los
+
 
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
@@ -58,11 +70,18 @@ export class FormsAliadosComponent implements OnInit {
     });
   }
 
-  onSelectedFile(event) {
-    if (event.target.files.length > 0) {
-      const file = event.target.files[0];
-      this.aliadoForm.get('image').setValue(file);
+  loadFile($event:any){
+    
+
+    if($event.target.files[0].type.indexOf("image")){
+      this.text_validation = 'Solamente pueden ser archivos de tipo imagen';
+      return;
     }
+    this.text_validation = '';
+    this.FILE_AVATAR = $event.target.files[0];
+    let reader = new FileReader();
+    reader.readAsDataURL(this.FILE_AVATAR);
+    reader.onloadend = ()=> this.IMAGE_PREVISUALIZA = reader.result;
   }
 
   get title() { return this.aliadoForm.get('title'); }
@@ -75,7 +94,11 @@ export class FormsAliadosComponent implements OnInit {
     formData.append('enlace', this.aliadoForm.get('enlace').value);
     formData.append('target', this.aliadoForm.get('target').value);
     formData.append('is_active', this.aliadoForm.get('is_active').value);
-    formData.append('image', this.aliadoForm.get('image').value);
+    formData.append('user_id', this.user_id);
+
+    if(this.FILE_AVATAR){
+      formData.append('imagen', this.FILE_AVATAR);
+    }
 
     const id = this.aliadoForm.get('id').value;
 
@@ -85,7 +108,7 @@ export class FormsAliadosComponent implements OnInit {
           if (res.status === 'error') {
             this.uploadError = res.message;
           } else {
-            this.router.navigate(['/aliados']);
+            this.router.navigate(['/dashboard/aliados']);
           }
         },
         error => this.error = error
@@ -96,7 +119,7 @@ export class FormsAliadosComponent implements OnInit {
           if (res.status === 'error') {
             this.uploadError = res.message;
           } else {
-            this.router.navigate(['/aliados']);
+            this.router.navigate(['/dashboard/aliados']);
           }
         },
         error => this.error = error

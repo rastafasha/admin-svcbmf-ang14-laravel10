@@ -110,7 +110,7 @@ export class FormsAfiliacionesComponent implements OnInit {
           if (res.status === 'error') {
             this.uploadError = res.message;
           } else {
-            this.router.navigate(['/afiliaciones']);
+            this.router.navigate(['/dashboard/afiliaciones']);
           }
         },
         error => this.error = error
@@ -121,7 +121,7 @@ export class FormsAfiliacionesComponent implements OnInit {
           if (res.status === 'error') {
             this.uploadError = res.message;
           } else {
-            this.router.navigate(['/afiliaciones']);
+            this.router.navigate(['/dashboard/afiliaciones']);
           }
         },
         error => this.error = error

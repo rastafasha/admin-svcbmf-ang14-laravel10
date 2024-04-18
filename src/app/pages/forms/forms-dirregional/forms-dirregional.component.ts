@@ -81,7 +81,7 @@ export class FormsDirregionalComponent implements OnInit {
           if (res.status === 'error') {
             this.uploadError = res.message;
           } else {
-            this.router.navigate(['/dirregional']);
+            this.router.navigate(['/dashboard/dirregional']);
           }
         },
         error => this.error = error
@@ -92,7 +92,7 @@ export class FormsDirregionalComponent implements OnInit {
           if (res.status === 'error') {
             this.uploadError = res.message;
           } else {
-            this.router.navigate(['/dirregional']);
+            this.router.navigate(['/dashboard/dirregional']);
           }
         },
         error => this.error = error

@@ -87,7 +87,7 @@ export class DirectorioIndexComponent implements OnInit {
 
   search() {
     return this.directorioService.search(this.query).subscribe(
-      res=>{
+      (res:any)=>{
         this.directories = res;
         if(!this.query){
           this.ngOnInit();

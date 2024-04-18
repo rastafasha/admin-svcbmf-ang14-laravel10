@@ -83,26 +83,29 @@
                             </div>
                         </div>
                     </div>
-                    <div class="form-group col-xs-12 col-sm-6 ">
-                        <label >Imagen Fondo (peso max: 500kb | medidas max: 1920x1080px)</label>
-                        <div class="col-xs-12 col-sm-6">
-                            <input type="file" id="image" (change)="onSelectedFile($event)" />
-                            <div [innerHTML]="uploadError" class="error"></div>
-                            <div *ngIf="imagePath">
-                                <br />
-                                <img [src]="imagePath" width="100px">
+                    <div class="col-xs-12 col-sm-6">
+                        <div class="form-group local-top-form">
+                            <label class="local-top">Subir Imagen (peso max: 500kb | medidas: 300x600px) <span class="login-danger">*</span></label>
+                            <div class="settings-btn upload-files-avator">
+                                <input type="file" accept="image/*" name="image" id="file" (change)="loadFile($event)" class="hide-input">
+                                <label for="file" class="upload">Choose File</label>
                             </div>
                         </div>
+                        <div *ngIf="FILE_AVATAR">
+                            <img [src]="IMAGE_PREVISUALIZA" style="width: 250px;" alt="">
+                        </div>
                     </div>
-                    <div class="form-group col-xs-12 col-sm-6 ">
-                        <label >Imagen Fondo Version movil (peso max: 500kb | medidas max: 1920x1080px)</label>
-                        <div class="col-xs-12 col-sm-6">
-                            <input type="file" id="imagemovil" (change)="onSelectedFile2($event)" />
-                            <div [innerHTML]="uploadError" class="error"></div>
-                            <div *ngIf="imagePath2">
-                                <br />
-                                <img [src]="imagePath2" width="100px">
+
+                     <div class="col-xs-12 col-sm-6">
+                        <div class="form-group local-top-form">
+                            <label class="local-top">Subir Imagen (peso max: 500kb | medidas: 300x600px) <span class="login-danger">*</span></label>
+                            <div class="settings-btn upload-files-avator">
+                                <input type="file" accept="image/*" name="imagenn" id="file1" (change)="loadFileMovil($event)" class="hide-input">
+                                <label for="file1" class="upload">Choose File</label>
                             </div>
+                        </div>
+                        <div *ngIf="FILE_AVATAR_MOVIL">
+                            <img [src]="IMAGE_PREVISUALIZA_MOVIL" style="width: 250px;" alt="">
                         </div>
                     </div>
 

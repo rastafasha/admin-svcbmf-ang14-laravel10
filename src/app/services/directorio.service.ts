@@ -56,26 +56,26 @@ export class DirectorioService {
     return this.http.get(URL,{headers:headers});
   }
 
-
-  createDirectorio(data:any,) {
+  createDirectorio(data:any) {
     let headers = new HttpHeaders({'Authorization': 'Bearer'+this.authService.token});
     let URL = apiUrl+"/directory/store/";
     return this.http.post(URL,data,{headers:headers});
     
   }
 
-  updateDirectorio(data:any, id:any) {
+  updateDirectorio(data:any, id: any) {
     let headers = new HttpHeaders({'Authorization': 'Bearer'+this.authService.token});
     let URL = apiUrl+"/directory/update/"+id;
     return this.http.post(URL,data,{headers:headers});
   }
 
-  deleteDirectorio(id: number) {
+  deleteDirectorio(id: any) {
     let headers = new HttpHeaders({'Authorization': 'Bearer'+this.authService.token});
     let URL = apiUrl+"/directory/destroy/"+id;
     return this.http.delete(URL, {headers:headers});
     
   }
+
 
 
   

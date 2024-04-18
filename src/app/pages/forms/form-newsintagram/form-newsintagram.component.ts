@@ -68,7 +68,7 @@ export class FormNewsintagramComponent implements OnInit {
           if (res.status === 'error') {
             this.uploadError = res.message;
           } else {
-            this.router.navigate(['/news-instagram']);
+            this.router.navigate(['/dashboard/news-instagram']);
           }
         },
         error => this.error = error
@@ -79,7 +79,7 @@ export class FormNewsintagramComponent implements OnInit {
           if (res.status === 'error') {
             this.uploadError = res.message;
           } else {
-            this.router.navigate(['/news-instagram']);
+            this.router.navigate(['/dashboard/news-instagram']);
           }
         },
         error => this.error = error

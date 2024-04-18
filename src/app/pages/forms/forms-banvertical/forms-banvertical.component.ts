@@ -15,8 +15,17 @@ export class FormsBanverticalComponent implements OnInit {
   error: string;
   uploadError: string;
   imagePath: string;
+  
 
   verticalForm: UntypedFormGroup;
+  
+  user: any;
+  user_id: any;
+  public FILE_AVATAR:any;
+  public IMAGE_PREVISUALIZA:any ;
+  valid_form:boolean = false;
+  valid_form_success:boolean = false;
+  text_validation:any = null;
 
   constructor(
     private fb: UntypedFormBuilder,
@@ -27,6 +36,11 @@ export class FormsBanverticalComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+
+    let USER = localStorage.getItem("user");// se solicita el usuario logueado
+    this.user = JSON.parse(USER ? USER: ''); //  si no hay un usuario en el localstorage retorna un objeto vacio
+    this.user_id = this.user.id;  //se asigna el doctor logueado a este campo para poderlo enviar en los
+
 
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
@@ -57,11 +71,20 @@ export class FormsBanverticalComponent implements OnInit {
     });
   }
 
-  onSelectedFile(event) {
-    if (event.target.files.length > 0) {
-      const file = event.target.files[0];
-      this.verticalForm.get('image').setValue(file);
+ 
+
+  loadFile($event:any){
+    
+
+    if($event.target.files[0].type.indexOf("image")){
+      this.text_validation = 'Solamente pueden ser archivos de tipo imagen';
+      return;
     }
+    this.text_validation = '';
+    this.FILE_AVATAR = $event.target.files[0];
+    let reader = new FileReader();
+    reader.readAsDataURL(this.FILE_AVATAR);
+    reader.onloadend = ()=> this.IMAGE_PREVISUALIZA = reader.result;
   }
 
   get enlace() { return this.verticalForm.get('enlace'); }
@@ -74,7 +97,12 @@ export class FormsBanverticalComponent implements OnInit {
     formData.append('target', this.verticalForm.get('target').value);
     formData.append('titulo', this.verticalForm.get('titulo').value);
     formData.append('is_active', this.verticalForm.get('is_active').value);
-    formData.append('image', this.verticalForm.get('image').value);
+    // formData.append('image', this.verticalForm.get('image').value);
+    formData.append('user_id', this.user_id);
+
+    if(this.FILE_AVATAR){
+      formData.append('imagen', this.FILE_AVATAR);
+    }
 
     const id = this.verticalForm.get('id').value;
 
@@ -84,7 +112,7 @@ export class FormsBanverticalComponent implements OnInit {
           if (res.status === 'error') {
             this.uploadError = res.message;
           } else {
-            this.router.navigate(['/banner-vertical']);
+            this.router.navigate(['/dashboard/banner-vertical']);
           }
         },
         error => this.error = error
@@ -95,7 +123,7 @@ export class FormsBanverticalComponent implements OnInit {
           if (res.status === 'error') {
             this.uploadError = res.message;
           } else {
-            this.router.navigate(['/banner-vertical']);
+            this.router.navigate(['/dashboard/banner-vertical']);
           }
         },
         error => this.error = error

@@ -74,7 +74,7 @@ export class FormsGaleriaComponent implements OnInit {
           if (res.status === 'error') {
             this.uploadError = res.message;
           } else {
-            this.router.navigate(['/galeria']);
+            this.router.navigate(['/dashboard/galeria']);
           }
         },
         error => this.error = error
@@ -85,7 +85,7 @@ export class FormsGaleriaComponent implements OnInit {
           if (res.status === 'error') {
             this.uploadError = res.message;
           } else {
-            this.router.navigate(['/galeria']);
+            this.router.navigate(['/dashboard/galeria']);
           }
         },
         error => this.error = error

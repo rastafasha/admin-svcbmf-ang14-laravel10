@@ -19,6 +19,17 @@ export class FormsRevistaComponent implements OnInit {
 
   revistaForm: UntypedFormGroup;
 
+  user: any;
+  user_id: any;
+  public FILE_AVATAR:any;
+  public IMAGE_PREVISUALIZA:any ;
+  public FILE_AVATAR_MOVIL:any;
+  public IMAGE_PREVISUALIZA_MOVIL:any ;
+  valid_form:boolean = false;
+  valid_form_success:boolean = false;
+  text_validation:any = null;
+
+
   constructor(
     private fb: UntypedFormBuilder,
     private revistaService: RevistaService,
@@ -28,6 +39,11 @@ export class FormsRevistaComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+
+    let USER = localStorage.getItem("user");// se solicita el usuario logueado
+    this.user = JSON.parse(USER ? USER: ''); //  si no hay un usuario en el localstorage retorna un objeto vacio
+    this.user_id = this.user.id;  //se asigna el doctor logueado a este campo para poderlo enviar en los
+
 
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
@@ -58,11 +74,16 @@ export class FormsRevistaComponent implements OnInit {
     });
   }
 
-  onSelectedFile(event) {
-    if (event.target.files.length > 0) {
-      const file = event.target.files[0];
-      this.revistaForm.get('image').setValue(file);
+  loadFile($event:any){
+    if($event.target.files[0].type.indexOf("image")){
+      this.text_validation = 'Solamente pueden ser archivos de tipo imagen';
+      return;
     }
+    this.text_validation = '';
+    this.FILE_AVATAR = $event.target.files[0];
+    let reader = new FileReader();
+    reader.readAsDataURL(this.FILE_AVATAR);
+    reader.onloadend = ()=> this.IMAGE_PREVISUALIZA = reader.result;
   }
 
   onSelectedPdf(event) {
@@ -71,6 +92,18 @@ export class FormsRevistaComponent implements OnInit {
       this.revistaForm.get('archivo').setValue(file);
     }
   }
+
+  // loadFileMovil($event:any){
+  //   if($event.target.files[0].type.indexOf("image")){
+  //     this.text_validation = 'Solamente pueden ser archivos de tipo imagen';
+  //     return;
+  //   }
+  //   this.text_validation = '';
+  //   this.FILE_AVATAR_MOVIL = $event.target.files[0];
+  //   let reader = new FileReader();
+  //   reader.readAsDataURL(this.FILE_AVATAR_MOVIL);
+  //   reader.onloadend = ()=> this.IMAGE_PREVISUALIZA_MOVIL = reader.result;
+  // }
 
   get volumen() { return this.revistaForm.get('volumen'); }
   get numero() { return this.revistaForm.get('numero'); }
@@ -81,8 +114,16 @@ export class FormsRevistaComponent implements OnInit {
     formData.append('volumen', this.revistaForm.get('volumen').value);
     formData.append('numero', this.revistaForm.get('numero').value);
     formData.append('fecha', this.revistaForm.get('fecha').value);
-    formData.append('archivo', this.revistaForm.get('archivo').value);
-    formData.append('image', this.revistaForm.get('image').value);
+    formData.append('imagenn', this.revistaForm.get('archivo').value);
+    // formData.append('image', this.revistaForm.get('image').value);
+
+
+    // formData.append('user_id', this.user_id);
+
+    if(this.FILE_AVATAR){
+      formData.append('imagen', this.FILE_AVATAR);
+    }
+
 
     const id = this.revistaForm.get('id').value;
 
@@ -92,7 +133,7 @@ export class FormsRevistaComponent implements OnInit {
           if (res.status === 'error') {
             this.uploadError = res.message;
           } else {
-            this.router.navigate(['/revista']);
+            this.router.navigate(['/dashboard/revista']);
           }
         },
         error => this.error = error
@@ -103,7 +144,7 @@ export class FormsRevistaComponent implements OnInit {
           if (res.status === 'error') {
             this.uploadError = res.message;
           } else {
-            this.router.navigate(['/revista']);
+            this.router.navigate(['/dashboard/revista']);
           }
         },
         error => this.error = error

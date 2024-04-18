@@ -79,7 +79,7 @@ export class FormsDocumentosComponent implements OnInit {
           if (res.status === 'error') {
             this.uploadError = res.message;
           } else {
-            this.router.navigate(['/documentos']);
+            this.router.navigate(['/dashboard/documentos']);
           }
         },
         error => this.error = error
@@ -90,7 +90,7 @@ export class FormsDocumentosComponent implements OnInit {
           if (res.status === 'error') {
             this.uploadError = res.message;
           } else {
-            this.router.navigate(['/documentos']);
+            this.router.navigate(['/dashboard/documentos']);
           }
         },
         error => this.error = error

@@ -88,7 +88,7 @@ export class FormsBlogComponent implements OnInit {
           if (res.status === 'error') {
             this.uploadError = res.message;
           } else {
-            this.router.navigate(['/blog']);
+            this.router.navigate(['/dashboard/blog']);
           }
         },
         error => this.error = error
@@ -99,7 +99,7 @@ export class FormsBlogComponent implements OnInit {
           if (res.status === 'error') {
             this.uploadError = res.message;
           } else {
-            this.router.navigate(['/blog']);
+            this.router.navigate(['/dashboard/blog']);
           }
         },
         error => this.error = error

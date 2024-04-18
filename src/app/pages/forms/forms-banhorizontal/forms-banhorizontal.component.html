@@ -64,16 +64,15 @@
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-6">
-                            <div class="form-group form-row">
-                                <label class="col-xs-12">Subir Imagen (peso max: 500kb | medidas: 970x250px)</label>
-                                <div class="col-xs-12">
-                                    <input type="file" id="image" (change)="onSelectedFile($event)" />
-                                    <div [innerHTML]="uploadError" class="error"></div>
-                                    <div *ngIf="imagePath">
-                                        <br />
-                                        <img [src]="imagePath" width="90%" class="shadow">
-                                    </div>
+                            <div class="form-group local-top-form">
+                                <label class="local-top">Subir Imagen (peso max: 500kb | medidas: 300x600px) <span class="login-danger">*</span></label>
+                                <div class="settings-btn upload-files-avator">
+                                    <input type="file" accept="image/*" name="image" id="file" (change)="loadFile($event)" class="hide-input">
+                                    <label for="file" class="upload">Choose File</label>
                                 </div>
+                            </div>
+                            <div *ngIf="FILE_AVATAR">
+                                <img [src]="IMAGE_PREVISUALIZA" style="width: 250px;" alt="">
                             </div>
                         </div>
 

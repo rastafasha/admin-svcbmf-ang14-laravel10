@@ -84,7 +84,7 @@ export class FormsPacientesComponent implements OnInit {
           if (res.status === 'error') {
             this.uploadError = res.message;
           } else {
-            this.router.navigate(['/pacientes']);
+            this.router.navigate(['/dashboard/pacientes']);
           }
         },
         error => this.error = error
@@ -95,7 +95,7 @@ export class FormsPacientesComponent implements OnInit {
           if (res.status === 'error') {
             this.uploadError = res.message;
           } else {
-            this.router.navigate(['/pacientes']);
+            this.router.navigate(['/dashboard/pacientes']);
           }
         },
         error => this.error = error

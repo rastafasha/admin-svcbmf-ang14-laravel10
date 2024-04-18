@@ -38,7 +38,7 @@
                     <tbody>
                         <tr class="footable-even" *ngFor="let slider of sliders | keys | paginate: { itemsPerPage: count, currentPage: p }">
                             <td><span class="footable-toggle"></span>{{slider.id}}</td>
-                            <td><img src="{{slider.image}}" alt="{{slider.title}}" width="40" height="40"></td>
+                            <td><img src="{{slider.avatar}}" alt="{{slider.title}}" width="40" height="40"></td>
                             <td><img src="{{slider.imagemovil}}" alt="{{slider.title}}" width="40" height="40"></td>
                             <td>{{slider.title}}</td>
                             <td>{{slider.enlace }}</td>

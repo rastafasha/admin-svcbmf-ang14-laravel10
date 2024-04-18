@@ -38,7 +38,7 @@
                     <tbody>
                         <tr class="footable-even" *ngFor="let bancuadrado of bancuadrados | keys | paginate: { itemsPerPage: count, currentPage: p }">
                             <td><span class="footable-toggle"></span>{{bancuadrado.id}}</td>
-                            <td><img src="{{bancuadrado.image}}" width="80" height="80"></td>
+                            <td><img src="{{bancuadrado.avatar}}" width="80" height="80"></td>
                             <td>{{bancuadrado.titulo}}</td>
                             <td>{{bancuadrado.enlace}}</td>
                             <td>{{bancuadrado.target}}</td>

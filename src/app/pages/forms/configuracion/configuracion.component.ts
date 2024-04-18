@@ -106,7 +106,7 @@ export class ConfiguracionComponent implements OnInit {
           if (res.status === 'error') {
             this.uploadError = res.message;
           } else {
-            this.router.navigate(['/configuracion']);
+            this.router.navigate(['/dashboard/configuracion']);
           }
         },
         error => this.error = error
@@ -117,7 +117,7 @@ export class ConfiguracionComponent implements OnInit {
           if (res.status === 'error') {
             this.uploadError = res.message;
           } else {
-            this.router.navigate(['/configuracion']);
+            this.router.navigate(['/dashboard/configuracion']);
           }
         },
         error => this.error = error

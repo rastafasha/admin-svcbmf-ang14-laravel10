@@ -38,7 +38,7 @@
                     <tbody>
                         <tr class="footable-even" *ngFor="let banhorizontal of banhorizontals | keys | paginate: { itemsPerPage: count, currentPage: p }">
                             <td><span class="footable-toggle"></span>{{banhorizontal.id}}</td>
-                            <td><img src="{{banhorizontal.image}}" width="120" height="40"></td>
+                            <td><img src="{{banhorizontal.avatar}}" width="120" height="40"></td>
                             <td>{{banhorizontal.titulo}}</td>
                             <td>{{banhorizontal.enlace}}</td>
                             <td>{{banhorizontal.target}}</td>

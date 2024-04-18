@@ -48,7 +48,7 @@ export class FormsFormacionComponent implements OnInit {
         }
       );
     } else {
-      this.pageTitle = 'Create Blog';
+      this.pageTitle = 'Create Formacion';
     }
 
     this.formacionForm = this.fb.group({
@@ -91,7 +91,7 @@ export class FormsFormacionComponent implements OnInit {
           if (res.status === 'error') {
             this.uploadError = res.message;
           } else {
-            this.router.navigate(['/formacion']);
+            this.router.navigate(['/dashboard/formacion']);
           }
         },
         error => this.error = error
@@ -102,7 +102,7 @@ export class FormsFormacionComponent implements OnInit {
           if (res.status === 'error') {
             this.uploadError = res.message;
           } else {
-            this.router.navigate(['/formacion']);
+            this.router.navigate(['/dashboard/formacion']);
           }
         },
         error => this.error = error
