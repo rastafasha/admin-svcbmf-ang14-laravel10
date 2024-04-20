@@ -15,16 +15,20 @@ import { NgxPaginationModule } from 'ngx-pagination';
 
 // angular file uploader
 import { AngularFileUploaderModule } from 'angular-file-uploader';
+import { ConfiguracionComponent } from './configuracion/configuracion.component';
+import { CKEditorModule } from 'ckeditor4-angular';
 
 @NgModule({
   declarations: [
     ConfiguracionesComponent,
     RolesViewComponent,
+    ConfiguracionComponent
 
   ],
   exports: [
     ConfiguracionesComponent,
     RolesViewComponent,
+    ConfiguracionComponent
   ],
   imports: [
     CommonModule,
@@ -36,7 +40,8 @@ import { AngularFileUploaderModule } from 'angular-file-uploader';
     PipesModule,
     BrowserAnimationsModule,
     NgxPaginationModule,
-    AngularFileUploaderModule
+    AngularFileUploaderModule,
+    CKEditorModule
   ]
 })
 export class ConfModule { }

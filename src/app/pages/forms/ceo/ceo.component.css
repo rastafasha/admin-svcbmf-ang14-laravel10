@@ -26,11 +26,11 @@
     flex-flow: column;
 }
 
-.gridform :nth-last-child(){
+/* .gridform :nth-last-child(){
     display: grid;
     grid-row: 1;
     grid-column: 1;
-}
+} */
 
 .gridform img {
     display: flex;

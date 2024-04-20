@@ -20,19 +20,39 @@ export class FormsBlogComponent implements OnInit {
 
   blogForm: UntypedFormGroup;
 
+  blog_id: any;
+  user: any;
+  user_id: any;
+  public FILE_AVATAR:any;
+  public IMAGE_PREVISUALIZA:any ;
+  public FILE_AVATAR_MOVIL:any;
+  public IMAGE_PREVISUALIZA_MOVIL:any ;
+  valid_form:boolean = false;
+  valid_form_success:boolean = false;
+  text_validation:any = null;
+
 
 
   constructor(
     private fb: UntypedFormBuilder,
     private blogService: BlogService,
     private router: Router,
-    private route: ActivatedRoute,
+    private ativatedRoute: ActivatedRoute,
     private location: Location
   ) { }
 
   ngOnInit() {
 
-    const id = this.route.snapshot.paramMap.get('id');
+    let USER = localStorage.getItem("user");// se solicita el usuario logueado
+    this.user = JSON.parse(USER ? USER: ''); //  si no hay un usuario en el localstorage retorna un objeto vacio
+    this.user_id = this.user.id;  //se asigna el doctor logueado a este campo para poderlo enviar en los
+
+    this.ativatedRoute.params.subscribe((resp:any)=>{
+      this.blog_id = resp.id; 
+     })
+
+
+    const id = this.ativatedRoute.snapshot.paramMap.get('id');
     if (id) {
       this.pageTitle = 'Edit Blog';
       this.blogService.getBlog(+id).subscribe(
@@ -62,11 +82,16 @@ export class FormsBlogComponent implements OnInit {
 
   }
 
-  onSelectedFile(event) {
-    if (event.target.files.length > 0) {
-      const file = event.target.files[0];
-      this.blogForm.get('image').setValue(file);
+  loadFile($event:any){
+    if($event.target.files[0].type.indexOf("image")){
+      this.text_validation = 'Solamente pueden ser archivos de tipo imagen';
+      return;
     }
+    this.text_validation = '';
+    this.FILE_AVATAR = $event.target.files[0];
+    let reader = new FileReader();
+    reader.readAsDataURL(this.FILE_AVATAR);
+    reader.onloadend = ()=> this.IMAGE_PREVISUALIZA = reader.result;
   }
 
   get title() { return this.blogForm.get('title'); }
@@ -78,9 +103,13 @@ export class FormsBlogComponent implements OnInit {
     formData.append('description', this.blogForm.get('description').value);
     formData.append('is_featured', this.blogForm.get('is_featured').value);
     formData.append('is_active', this.blogForm.get('is_active').value);
-    formData.append('image', this.blogForm.get('image').value);
-
-    const id = this.blogForm.get('id').value;
+    // formData.append('image', this.blogForm.get('image').value);
+    formData.append('user_id', this.user_id);
+    
+    if(this.FILE_AVATAR){
+      formData.append('imagen', this.FILE_AVATAR);
+    }
+    const id = this.blog_id;
 
     if (id) {
       this.blogService.updateBlog(formData, +id).subscribe(

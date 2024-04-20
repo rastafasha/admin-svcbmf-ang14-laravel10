@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Configuracion } from '../models/configuracion';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
+import { AccountService } from './account.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,51 +13,42 @@ export class ConfiguracionService {
 
   serverUrl = environment.apiUrl;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+    public authService: AccountService,
+  ) { }
 
-  getConfiguracions() {
-    return this.http.get<Configuracion>(this.serverUrl + 'api_configuracion/adminConfiguracions/').pipe(
-      catchError(this.handleError)
-    );
+  getSettings() {
+    let headers = new HttpHeaders({'Authorization': 'Bearer'+this.authService.token});
+    let URL = this.serverUrl+"/setting";
+    return this.http.get(URL, {headers:headers});
+    
   }
 
-  getConfiguracion(id: number) {
-    return this.http.get<Configuracion>(this.serverUrl + 'api_configuracion/adminConfiguracion/' + id).pipe(
-      catchError(this.handleError)
-    );
+  getSetting(id: any) {
+    let headers = new HttpHeaders({'Authorization': 'Bearer'+this.authService.token});
+    let URL = this.serverUrl+"/setting/show/"+id;
+    return this.http.get(URL,{headers:headers});
   }
 
 
-  createConfiguracion(configuraciones) {
-    return this.http.post<any>(this.serverUrl + 'api_configuracion/createConfiguracion/', configuraciones)
-    .pipe(
-      catchError(this.handleError)
-    );
+  createSetting(data:any) {
+    let headers = new HttpHeaders({'Authorization': 'Bearer'+this.authService.token});
+    let URL = this.serverUrl+"/setting/store/";
+    return this.http.post(URL,data,{headers:headers});
+    
   }
 
-  updateConfiguracion(configuraciones, id: number) {
-    return this.http.post<any>(this.serverUrl + 'api_configuracion/updateConfiguracion/' + id, configuraciones)
-    .pipe(
-      catchError(this.handleError)
-    );
+  updateSetting(data:any, id: number) {
+    let headers = new HttpHeaders({'Authorization': 'Bearer'+this.authService.token});
+    let URL = this.serverUrl+"/setting/update/"+id;
+    return this.http.post(URL,data,{headers:headers});
   }
 
-  deleteConfiguracion(id: number) {
-    return this.http.delete(this.serverUrl + 'api_configuracion/deleteConfiguracion/' + id).pipe(
-      catchError(this.handleError)
-    );
+  deleteSetting(id: number) {
+    let headers = new HttpHeaders({'Authorization': 'Bearer'+this.authService.token});
+    let URL = this.serverUrl+"/setting/destroy/"+id;
+    return this.http.delete(URL, {headers:headers});
+    
   }
 
-  private handleError(error: HttpErrorResponse) {
-    if (error.error instanceof ErrorEvent) {
-      // A client-side or network error occurred. Handle it accordingly.
-      console.error('An error occurred:', error.error.message);
-    } else {
-      // The backend returned an unsuccessful response code.
-      // The response body may contain clues as to what went wrong,
-      console.error(`Backend returned code ${error.status}, ` + `body was: ${error.error}`);
-    }
-    // return an observable with a user-facing error message
-    return throwError('Something bad happened. Please try again later.');
-  }
 }

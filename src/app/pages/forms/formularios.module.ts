@@ -2,8 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FotoceomanageComponent } from '../manage/fotoceomanage/fotoceomanage.component';
 import { CeoComponent } from './ceo/ceo.component';
-import { ConfiguracionComponent } from './configuracion/configuracion.component';
-import { FormNewsintagramComponent } from './form-newsintagram/form-newsintagram.component';
 import { FormsAfiliacionesComponent } from './forms-afiliaciones/forms-afiliaciones.component';
 import { FormsAliadosComponent } from './forms-aliados/forms-aliados.component';
 import { FormsBancuadradoComponent } from './forms-bancuadrado/forms-bancuadrado.component';
@@ -49,11 +47,10 @@ import { FormsDirregionalComponent } from './forms-dirregional/forms-dirregional
       FormsFormacionComponent,
       FormsSliderComponent,
       FormsAliadosComponent,
-      FormNewsintagramComponent,
+      // FormNewsintagramComponent,
       CeoComponent,
       FotoceoComponent,
       FotoceomanageComponent,
-      ConfiguracionComponent,
       FormsDirregionalComponent
   ],
   exports: [
@@ -70,11 +67,10 @@ import { FormsDirregionalComponent } from './forms-dirregional/forms-dirregional
       FormsFormacionComponent,
       FormsSliderComponent,
       FormsAliadosComponent,
-      FormNewsintagramComponent,
+      // FormNewsintagramComponent,
       CeoComponent,
       FotoceoComponent,
       FotoceomanageComponent,
-      ConfiguracionComponent,
       FormsDirregionalComponent
   ],
   imports: [

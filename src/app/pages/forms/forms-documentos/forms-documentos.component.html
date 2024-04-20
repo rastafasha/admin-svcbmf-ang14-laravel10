@@ -44,10 +44,14 @@
                             </div>
                         </div>
                         <div class="form-group col-12 col-sm-6">
-                            <label class="col-md-3">Subir pdf</label>
-                            <div class="col-12">
-                                <input type="file" name="arcivo" id="archivo" (change)="onSelectedFile($event)" accept="pdf/*" />
-
+                            <label>Subir archivo pdf</label>
+                            <div>
+                                <input type="file" id="archivo" name="imagenn" (change)="onSelectedPdf($event)" />
+                                <div [innerHTML]="uploadError" class="error"></div>
+                                <div *ngIf="filePath">
+                                    <br />
+                                    <img [src]="filePath" width="100px">
+                                </div>
                             </div>
                         </div>
 

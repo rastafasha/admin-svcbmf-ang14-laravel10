@@ -17,7 +17,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { DirectorioComponent } from '../components/directorio/directorio.component';
 import { InstallPwaComponent } from './install-pwa/install-pwa.component';
 import { CeoComponent } from './forms/ceo/ceo.component';
-import { ConfiguracionComponent } from './forms/configuracion/configuracion.component';
+import { ConfiguracionComponent } from './conf/configuracion/configuracion.component';
 import { FormsAfiliacionesComponent } from './forms/forms-afiliaciones/forms-afiliaciones.component';
 import { FotoceoComponent } from './forms/fotoceo/fotoceo.component';
 import { AfiliacionesComponent } from './manage/afiliaciones/afiliaciones.component';
@@ -63,6 +63,7 @@ const childRoutes: Routes = [
 
     //configuraciones
     { path: 'configuraciones',  component: ConfiguracionesComponent, data:{title:'Configuraciones'} },
+    { path: 'settings/edit/:id',  component: ConfiguracionComponent, data:{title:'Settings'} },
 
     { path: 'rolesconf', component: RolesViewComponent, data:{title:'Planes'} },
 

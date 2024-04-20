@@ -85,6 +85,12 @@ export class DirectorioIndexComponent implements OnInit {
   //   )
   // }
 
+  public PageSize(): void {
+    this.getDirectorios();
+    this.query = '';
+  }
+
+
   search() {
     return this.directorioService.search(this.query).subscribe(
       (res:any)=>{

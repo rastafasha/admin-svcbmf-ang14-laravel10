@@ -16,7 +16,12 @@ export class FormsDocumentosComponent implements OnInit {
   error: string;
   uploadError: string;
   imagePath: string;
-  documentos:Documento
+  documentos:Documento;
+  filePath: string;
+
+  user: any;
+  user_id: any;
+  document_id: any;
 
   documentoForm: UntypedFormGroup;
   public editorData = `<p>This is a CKEditor 4 WYSIWYG editor instance created with Angular.</p>`;
@@ -25,14 +30,22 @@ export class FormsDocumentosComponent implements OnInit {
     private fb: UntypedFormBuilder,
     private documentoService: DocumentoService,
     private router: Router,
-    private route: ActivatedRoute,
+    public ativatedRoute: ActivatedRoute,
     private location: Location
 
   ) { }
 
   ngOnInit() {
 
-    const id = this.route.snapshot.paramMap.get('id');
+    let USER = localStorage.getItem("user");// se solicita el usuario logueado
+    this.user = JSON.parse(USER ? USER: ''); //  si no hay un usuario en el localstorage retorna un objeto vacio
+    this.user_id = this.user.id;  //se asigna el doctor logueado a este campo para poderlo enviar en los
+
+    this.ativatedRoute.params.subscribe((resp:any)=>{
+      this.document_id = resp.id; 
+     })
+
+    const id = this.ativatedRoute.snapshot.paramMap.get('id');
     if (id) {
       this.pageTitle = 'Edit Documento';
       this.documentoService.getDocumento(+id).subscribe(
@@ -56,7 +69,7 @@ export class FormsDocumentosComponent implements OnInit {
     });
   }
 
-  onSelectedFile(event) {
+  onSelectedPdf(event) {
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
       this.documentoForm.get('archivo').setValue(file);
@@ -69,9 +82,10 @@ export class FormsDocumentosComponent implements OnInit {
   onSubmit () {
     const formData = new FormData();
     formData.append('titulo', this.documentoForm.get('titulo').value);
-    formData.append('archivo', this.documentoForm.get('archivo').value);
+    formData.append('imagenn', this.documentoForm.get('archivo').value);
+    formData.append('user_id', this.user_id);
 
-    const id = this.documentoForm.get('id').value;
+    const id = this.document_id;
 
     if (id) {
       this.documentoService.updateDocumento(formData, +id).subscribe(

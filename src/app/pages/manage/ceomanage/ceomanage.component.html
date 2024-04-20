@@ -41,7 +41,7 @@
                     <tbody>
                         <tr class="footable-even" *ngFor="let ceo of ceos | keys | paginate: { itemsPerPage: count, currentPage: p }">
                             <td><span class="footable-toggle"></span>{{ceo.id}}</td>
-                            <td><img src="{{ceo.image}}" alt="{{ceo.name}}" width="40" height="40"></td>
+                            <td><img src="{{ceo.avatar}}" alt="{{ceo.name}}" width="40" height="40"></td>
                             <td>{{ceo.name}}</td>
                             <td>{{ceo.cargo_id}}</td>
                             <td>{{ceo.cargoceo_name}}</td>

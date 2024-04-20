@@ -34,19 +34,19 @@ export class ConfiguracionComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
       this.pageTitle = 'Edit Configuración';
-      this.configuracionService.getConfiguracion(+id).subscribe(
-        res => {
+      this.configuracionService.getSetting(+id).subscribe(
+        (res:any) => {
           this.configForm.patchValue({
-            direccion: res.direccion,
-            telefono: res.telefono,
-            telefonoActivo: res.telefonoActivo,
-            telPresidencia: res.telPresidencia,
-            telPresActivo: res.telPresActivo,
-            telSecretaria: res.telSecretaria,
-            telSecActivo: res.telSecActivo,
-            telTesoreria: res.telTesoreria,
-            telTesActivo: res.telTesActivo,
-            id: res.id
+            direccion: res.setting.direccion,
+            telefono: res.setting.telefono,
+            telefonoActivo: res.setting.telefonoActivo,
+            telPresidencia: res.setting.telPresidencia,
+            telPresActivo: res.setting.telPresActivo,
+            telSecretaria: res.setting.telSecretaria,
+            telSecActivo: res.setting.telSecActivo,
+            telTesoreria: res.setting.telTesoreria,
+            telTesActivo: res.setting.telTesActivo,
+            id: res.setting.id
           });
         }
       );
@@ -101,23 +101,23 @@ export class ConfiguracionComponent implements OnInit {
     const id = this.configForm.get('id').value;
 
     if (id) {
-      this.configuracionService.updateConfiguracion(formData, +id).subscribe(
-        res => {
+      this.configuracionService.updateSetting(formData, +id).subscribe(
+        (res:any) => {
           if (res.status === 'error') {
             this.uploadError = res.message;
           } else {
-            this.router.navigate(['/dashboard/configuracion']);
+            this.router.navigate(['/dashboard/settings']);
           }
         },
         error => this.error = error
       );
     } else {
-      this.configuracionService.createConfiguracion(formData).subscribe(
-        res => {
+      this.configuracionService.createSetting(formData).subscribe(
+        (res:any) => {
           if (res.status === 'error') {
             this.uploadError = res.message;
           } else {
-            this.router.navigate(['/dashboard/configuracion']);
+            this.router.navigate(['/dashboard/settings']);
           }
         },
         error => this.error = error

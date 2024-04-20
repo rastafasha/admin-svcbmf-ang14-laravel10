@@ -28,7 +28,7 @@
         <div class="col-12 col-sm-3 fr-view" *ngFor="let galeria of galerias | keys | paginate: { itemsPerPage: count, currentPage: p }">
             <div class="card ">
                 <div class="card-body">
-                    <img src="{{galeria.image}}" style="display: block; width: 90%; margin-bottom: 10px;">
+                    <img src="{{galeria.avatar}}" style="display: block; width: 90%; margin-bottom: 10px;">
 
                     <button class="btn btn-sm btn-outline-danger" (click)="onDelete(galeria.id)"><i class="fa fa-trash"></i>Borrar</button>
                     <a [routerLink]="['/dashboard/galeria/edit', galeria.id]"><button class="btn btn-sm btn-outline-success"><i class="fa fa-pencil"></i>Editar </button></a>

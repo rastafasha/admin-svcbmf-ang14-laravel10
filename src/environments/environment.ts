@@ -5,11 +5,11 @@
 export const environment = {
   production: false,
   //apirest local
-  apiUrl: "http://127.0.0.1:8000/api",
-  apiUrlMedia: "http://127.0.0.1:8000/storage/",
+  // apiUrl: "http://127.0.0.1:8000/api",
+  // apiUrlMedia: "http://127.0.0.1:8000/storage/",
   //remoto
-  // apiUrl: "https://svcbmf.com/backend-api/public/api",
-  // apiUrlMedia: "https://svcbmf.com/backend-api/storage/app/",
+  apiUrl: "https://svcbmf.com/backend-api/public/api",
+  apiUrlMedia: "https://svcbmf.com/backend-api/storage/app/",
 };
 
 /*
