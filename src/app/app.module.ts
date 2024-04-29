@@ -27,6 +27,7 @@ import { AngularFileUploaderModule } from 'angular-file-uploader';
 import { DirectoryModule } from './pages/directorio/directory.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { UserModule } from './pages/user/user.module';
 @NgModule({
   declarations: [
     AppComponent
@@ -45,6 +46,7 @@ import { environment } from '../environments/environment';
     NgxSpinnerModule,
     AngularFileUploaderModule,
     DirectoryModule,
+    UserModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
       // Register the ServiceWorker as soon as the application is stable

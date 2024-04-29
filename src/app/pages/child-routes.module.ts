@@ -11,8 +11,8 @@ import { DirectorioIndexComponent } from './directorio/directorio-index/director
 import { DirectorioViewPublicComponent } from './directorio/directorio-view-public/directorio-view-public.component';
 import { DirectorioViewComponent } from './directorio/directorio-view/directorio-view.component';
 import { HelpComponent } from './help/help.component';
-import { UserProfileComponent } from './user-profile/user-profile.component';
-import { UsersComponent } from './users/users.component';
+import { UserProfileComponent } from './user/user-profile/user-profile.component';
+import { UsersComponent } from './user/users/users.component';
 import { ProfileComponent } from './profile/profile.component';
 import { DirectorioComponent } from '../components/directorio/directorio.component';
 import { InstallPwaComponent } from './install-pwa/install-pwa.component';
@@ -52,6 +52,8 @@ import { ManageSliderComponent } from './manage/manage-slider/manage-slider.comp
 import { ManageTrabajoscComponent } from './manage/manage-trabajosc/manage-trabajosc.component';
 import { NewsintagramComponent } from './manage/newsintagram/newsintagram.component';
 import { ViewTrabajosComponent } from './vistas/vista-trabajos/view-trabajos.component';
+import { ActualizacionesComponent } from './manage/actualizaciones/actualizaciones.component';
+import { UserEditComponent } from './user/user-edit/user-edit.component';
 
 
 
@@ -66,10 +68,13 @@ const childRoutes: Routes = [
     { path: 'settings/edit/:id',  component: ConfiguracionComponent, data:{title:'Settings'} },
 
     { path: 'rolesconf', component: RolesViewComponent, data:{title:'Planes'} },
+    { path: 'actualizaciones', component: ActualizacionesComponent, data:{title:'Actualizaciones'} },
 
     //user
     { path: 'users', component: UsersComponent, data:{title:'Usuarios'} },
+    { path: 'users/create', component: UserEditComponent, data:{title:'Detalle Usuario'} },
     { path: 'user/:id', component: UserProfileComponent, data:{title:'Detalle Usuario'} },
+    { path: 'user/edit/:id', component: UserProfileComponent, data:{title:'Editar Usuario'} },
     { path: 'user/edit/:id', component: UserProfileComponent, data:{title:'Editar Usuario'} },
     // { path: 'user/edit/:id', component: UserDetailsComponent, data:{title:'Editar Usuario'} },
     { path: 'profile/:id',  component: ProfileComponent, data:{title:'Perfil'} },

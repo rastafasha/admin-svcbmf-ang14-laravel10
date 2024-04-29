@@ -8,8 +8,8 @@ export const environment = {
   // apiUrl: "http://127.0.0.1:8000/api",
   // apiUrlMedia: "http://127.0.0.1:8000/storage/",
   //remoto
-  apiUrl: "https://svcbmf.com/backend-api/public/api",
-  apiUrlMedia: "https://svcbmf.com/backend-api/storage/app/",
+  apiUrl: "https://svcbmf.com/backend-api-svcbmf/public/api",
+  apiUrlMedia: "https://svcbmf.com/backend-api-svcbmf/storage/app/",
 };
 
 /*

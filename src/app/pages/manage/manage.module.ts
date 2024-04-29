@@ -29,6 +29,7 @@ import { ManageSliderComponent } from './manage-slider/manage-slider.component';
 import { ManageTrabajoscComponent } from './manage-trabajosc/manage-trabajosc.component';
 import { ManageUsuariosComponent } from './manage-usuarios/manage-usuarios.component';
 import { NewsintagramComponent } from './newsintagram/newsintagram.component';
+import { ActualizacionesComponent } from './actualizaciones/actualizaciones.component';
 
 
 
@@ -53,6 +54,7 @@ import { NewsintagramComponent } from './newsintagram/newsintagram.component';
     ManageTrabajoscComponent,
     ManageSliderComponent,
     NewsintagramComponent,
+    ActualizacionesComponent,
   ],
   exports: [
     ConfiguracionMComponent,
@@ -74,6 +76,7 @@ import { NewsintagramComponent } from './newsintagram/newsintagram.component';
     ManageTrabajoscComponent,
     ManageSliderComponent,
     NewsintagramComponent,
+    ActualizacionesComponent
     
   ],
   imports: [

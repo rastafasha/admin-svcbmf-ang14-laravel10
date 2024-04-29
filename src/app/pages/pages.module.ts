@@ -30,9 +30,9 @@ import { NgxSpinnerModule } from "ngx-spinner";
 import { ContactComponent } from './contact/contact.component';
 import { HelpComponent } from './help/help.component';
 import { ProfileComponent } from './profile/profile.component';
-import { UserDetailsComponent } from './user-details/user-details.component';
-import { UserProfileComponent } from './user-profile/user-profile.component';
-import { UsersComponent } from './users/users.component';
+import { UserDetailsComponent } from './user/user-details/user-details.component';
+import { UserProfileComponent } from './user/user-profile/user-profile.component';
+import { UsersComponent } from './user/users/users.component';
 
 // angular file uploader
 import { AngularFileUploaderModule } from 'angular-file-uploader';
@@ -44,29 +44,23 @@ import { InstallPwaComponent } from './install-pwa/install-pwa.component';
 import { FormulariosModule } from './forms/formularios.module';
 import { ManageModule } from './manage/manage.module';
 import { VistasModule } from './vistas/vistas.module';
+import { UserEditComponent } from './user/user-edit/user-edit.component';
+import { UserModule } from './user/user.module';
 @NgModule({
   declarations: [
     DashboardComponent,
     DashboardAdminComponent,
     PagesComponent,
-    ProfileComponent,
-    UserDetailsComponent,
-    UsersComponent,
     HelpComponent,
     ContactComponent,
-    UserProfileComponent,
     PagesComponent,
     InstallPwaComponent
   ],
   exports: [
     DashboardComponent,
     DashboardAdminComponent,
-    ProfileComponent,
-    UserDetailsComponent,
-    UsersComponent,
     HelpComponent,
     ContactComponent,
-    UserProfileComponent,
     PagesComponent,
     InstallPwaComponent
 
@@ -92,7 +86,8 @@ import { VistasModule } from './vistas/vistas.module';
     CKEditorModule,
     FormulariosModule,
     ManageModule,
-    VistasModule
+    VistasModule,
+    UserModule
 
   ],
   providers: [

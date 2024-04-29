@@ -113,6 +113,8 @@ export class AccountService {
         );
   }
 
+  
+
   logout(): void {
     localStorage.removeItem('auth_token');
     localStorage.removeItem('user');

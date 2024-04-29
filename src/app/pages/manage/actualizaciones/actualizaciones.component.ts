@@ -1,23 +1,22 @@
+import { HttpClient, HttpBackend } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-
-import { HttpBackend, HttpClient, HttpHandler } from '@angular/common/http';
-
-import { Location } from '@angular/common';
-import Swal from 'sweetalert2';
 import { Directorio } from 'src/app/models/directorio';
 import { User } from 'src/app/models/user';
+import { ActualizacionesService } from 'src/app/services/actualizaciones.service';
 import { DirectorioService } from 'src/app/services/directorio.service';
 import { UserService } from 'src/app/services/user.service';
 import { environment } from 'src/environments/environment';
+import Swal from 'sweetalert2';
+import { Location } from '@angular/common';
 
 @Component({
-  selector: 'app-directorio-index',
-  templateUrl: './directorio-index.component.html',
-  styleUrls: ['./directorio-index.component.css']
+  selector: 'app-actualizaciones',
+  templateUrl: './actualizaciones.component.html',
+  styleUrls: ['./actualizaciones.component.css']
 })
-export class DirectorioIndexComponent implements OnInit {
+export class ActualizacionesComponent implements OnInit {
 
-  title = "Directorio"
+  title = "Actualizaciones de Directorio"
 
   loading = false;
   usersCount = 0;
@@ -37,7 +36,7 @@ export class DirectorioIndexComponent implements OnInit {
   ServerUrl = environment.apiUrl;
 
   constructor(
-    private directorioService: DirectorioService,
+    private actualizacionesService: ActualizacionesService,
     private location: Location,
     private http: HttpClient,
     private userService: UserService,
@@ -53,7 +52,7 @@ export class DirectorioIndexComponent implements OnInit {
   }
 
   getDirectorios(): void {
-    this.directorioService.getDirectorios().subscribe(
+    this.actualizacionesService.getActualizacione().subscribe(
       (res:any) =>{
         this.directories = res.directories.data;
         error => this.error = error;
@@ -68,7 +67,7 @@ export class DirectorioIndexComponent implements OnInit {
   }
 
   eliminarDirectory(id:number){
-    this.directorioService.deleteDirectorio(+id).subscribe(
+    this.actualizacionesService.deleteActualizacione(+id).subscribe(
       res=>{
         Swal.fire('Eliminado', 'directorio eliminado', 'success');
         this.getDirectorios();
@@ -93,13 +92,13 @@ export class DirectorioIndexComponent implements OnInit {
 
 
   search() {
-    return this.directorioService.search(this.query).subscribe(
-      (res:any)=>{
-        this.directories = res;
-        if(!this.query){
-          this.ngOnInit();
-        }
-      });
+    // return this.actualizacionesService.search(this.query).subscribe(
+    //   (res:any)=>{
+    //     this.directories = res;
+    //     if(!this.query){
+    //       this.ngOnInit();
+    //     }
+    //   });
   }
 
 }
