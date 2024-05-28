@@ -29,7 +29,7 @@ export class ActualizacionesComponent implements OnInit {
   
   error: string;
   msm_error: string;
-  directories: any;
+  actualizacions: any;
   query:string ='';
 
 
@@ -54,9 +54,9 @@ export class ActualizacionesComponent implements OnInit {
   getDirectorios(): void {
     this.actualizacionesService.getActualizacione().subscribe(
       (res:any) =>{
-        this.directories = res.directories.data;
+        this.actualizacions = res.actualizacions;
         error => this.error = error;
-        console.log(this.directories);
+        console.log(this.actualizacions);
       }
     );
   }

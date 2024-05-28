@@ -68,7 +68,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let directory of directories |  paginate: { itemsPerPage: count, currentPage: p }">
+                                <tr *ngFor="let directory of actualizacions |  paginate: { itemsPerPage: count, currentPage: p }">
                                     <!-- <td>
                                         <a [routerLink]="['/dashboard/directorio/view-public/', directory.id]">{{directory.id}}</a>
                                     </td> -->
@@ -132,7 +132,7 @@
 
                 <!-- movil -->
                 <div class=" movil ">
-                    <div class="card text-left usuariosmovil   shadow-sm" *ngFor="let directory of directories |  paginate: { itemsPerPage: count, currentPage: p }">
+                    <div class="card text-left usuariosmovil   shadow-sm" *ngFor="let directory of actualizacions |  paginate: { itemsPerPage: count, currentPage: p }">
                         <div class="card-body inff direct">
                             <div class="tooop">
                                 <div *ngIf="!directory.image ">
