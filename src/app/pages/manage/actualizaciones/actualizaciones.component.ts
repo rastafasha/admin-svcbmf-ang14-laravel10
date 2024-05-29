@@ -92,13 +92,13 @@ export class ActualizacionesComponent implements OnInit {
 
 
   search() {
-    // return this.actualizacionesService.search(this.query).subscribe(
-    //   (res:any)=>{
-    //     this.directories = res;
-    //     if(!this.query){
-    //       this.ngOnInit();
-    //     }
-    //   });
+    return this.actualizacionesService.search(this.query).subscribe(
+      (res:any)=>{
+        this.actualizacions = res;
+        if(!this.query){
+          this.ngOnInit();
+        }
+      });
   }
 
 }

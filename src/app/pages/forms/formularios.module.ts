@@ -28,6 +28,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { PipesModule } from 'src/app/pipes/pipes.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { FormsDirregionalComponent } from './forms-dirregional/forms-dirregional.component';
+import { FormActualizacionComponent } from './form-actualizacion/form-actualizacion.component';
 
 
 
@@ -51,7 +52,8 @@ import { FormsDirregionalComponent } from './forms-dirregional/forms-dirregional
       CeoComponent,
       FotoceoComponent,
       FotoceomanageComponent,
-      FormsDirregionalComponent
+      FormsDirregionalComponent,
+      FormActualizacionComponent
   ],
   exports: [
     FormsAfiliacionesComponent,
@@ -71,7 +73,8 @@ import { FormsDirregionalComponent } from './forms-dirregional/forms-dirregional
       CeoComponent,
       FotoceoComponent,
       FotoceomanageComponent,
-      FormsDirregionalComponent
+      FormsDirregionalComponent,
+      FormActualizacionComponent
   ],
   imports: [
     CommonModule,

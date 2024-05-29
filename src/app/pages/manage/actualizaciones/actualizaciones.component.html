@@ -44,14 +44,6 @@
                         </form>
                         <!-- buscador -->
                     </div>
-                    <div class="col-xs-1 col-sm-1">
-                        <div class="text-right">
-                            <button class="btn btn-primary" [routerLink]="['/dashboard/directorio/create/']">
-                    <i class="fa fa-pencil"></i>
-                    Crear
-                  </button>
-                        </div>
-                    </div>
                 </div>
 
 
@@ -60,7 +52,6 @@
                         <table [ngClass]="loading? 'table table-borderless datatable':'table table-borderless'">
                             <thead>
                                 <tr>
-                                    <th>imagen</th>
                                     <th>user ID</th>
                                     <th>Nombre</th>
                                     <th>Email</th>
@@ -69,52 +60,20 @@
                             </thead>
                             <tbody>
                                 <tr *ngFor="let directory of actualizacions |  paginate: { itemsPerPage: count, currentPage: p }">
-                                    <!-- <td>
-                                        <a [routerLink]="['/dashboard/directorio/view-public/', directory.id]">{{directory.id}}</a>
-                                    </td> -->
+                                   
                                     <td>
-                                        <div class="image">
-                                            <div *ngIf="!directory.image ">
-                                                <img [src]="directory.image | imagenPipe: 'directories'" style="height: 50px; width: 50px;" class="img-circle avatar">
-                                            </div>
-                                            <div *ngIf="directory.image">
-                                                <img [src]="directory.image | imagenPipe: 'directories'" style="height: 50px; width: 50px;" class="img-circle avatar">
-
-                                            </div>
-                                        </div>
+                                        {{directory.id}}
                                     </td>
                                     <td>
-                                        <a [routerLink]="['/dashboard/user/', directory.user_id]">{{directory.user_id}}</a>
+                                        <a [routerLink]="['/dashboard/actualizaciones/edit', directory.id]">
+                                            {{directory.nombre}} {{directory.surname}}
+                                        </a>
                                     </td>
-
-
-
-                                    <td>{{directory.nombre}} {{directory.surname}}</td>
                                     <td>{{directory.email}} </td>
-
-                                    <!-- <td>
-
-                                        <span class="badge bg-success" *ngIf="directory.status === 'PUBLISHED'">Publicado</span>
-                                        <span class="badge bg-primary" *ngIf="directory.status === 'PENDING'">Pendiente</span>
-                                        <span class="badge bg-danger" *ngIf="directory.status === 'REJECTED'">Rechazado</span>
-                                    </td>
-                                    <td>
-                                        <select class="form-control" [(ngModel)]="directory.status" (change)="cambiarStatus(directory)">
-                                        <option value="PUBLISHED">Publicado</option>
-                                        <option value="PENDING">Pendiente</option>
-                                        <option value="REJECTED">Rechazado</option>
-                                      </select>
-                                    </td> -->
-
-                                    <!-- <td><span [ngClass]="user.is_active == 1 ? 'badge bg-success' : 'badge bg-warning'" class="badge bg-success">{{user.is_active == 1? 'Activo':'Offline'}}</span></td> -->
-
                                     <td class="text-nowrap text-center">
 
-                                        <a [routerLink]="['/dashboard/directorio/edit', directory.id]" class="cursor" data-toggle="tooltip" data-original-title="Edit">
+                                        <a [routerLink]="['/dashboard/actualizaciones/edit', directory.id]" class="cursor" data-toggle="tooltip" data-original-title="Edit">
                                             <div class="btn btn-success"><i class="fa fa-edit"></i></div>
-                                        </a>
-                                        <a (click)="eliminarDirectory(directory.id)" class="cursor" data-toggle="tooltip" data-original-title="Borrar">
-                                            <div class="btn btn-danger"><i class="fa fa-trash"></i></div>
                                         </a>
                                     </td>
 

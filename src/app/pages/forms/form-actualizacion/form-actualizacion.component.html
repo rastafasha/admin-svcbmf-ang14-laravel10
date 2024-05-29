@@ -9,7 +9,7 @@
                 <nav>
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a routerLink="/"><i class="fa fa-home"></i> Inicio</a></li>
-                        <li class="breadcrumb-item"><a routerLink="/dashboard/directorio">Directorio</a></li>
+                        <li class="breadcrumb-item"><a routerLink="/dashboard/actualizaciones">Actualizacion</a></li>
                         <li class="breadcrumb-item active">{{pageTitle}}</li>
                     </ol>
                 </nav>
@@ -17,7 +17,7 @@
             <!-- End Page Title -->
         </div>
         <div class="buton">
-            <button class="btn btn-outline-success pull-right" (click)="guardarDirectorio()">Guardar</button>
+            <!-- <button class="btn btn-outline-success pull-right" (click)="guardarDirectorio()">Guardar</button> -->
             <button class="btn btn-outline-danger pull-right" href="javascript:void(0)" (click)="goBack()">Volver</button>
         </div>
 
@@ -188,24 +188,11 @@
 
                                             </div>
                                         </div>
-                                        <div class="col-xs-12">
-                                            <h4>Codigo Vcard QR</h4>
-                                            <br>
-                                            <qr-code *ngIf="display" class="code" id="box" [value]="vCardInfo" [size]="200" style=>
-                                                <img class="yellow">
-                                            </qr-code>
-                                            <div class="clear"></div>
-                                            <!-- <a class="btn btn-primary" (click)="generateQRCode()">Generar QR</a> -->
-                                            <a class="btn btn-primary" *ngIf="display" value="vCardInfo" (click)="hideQRCode()">Hide QR</a>
-                                            <!-- <a class="btn btn-primary" *ngIf="display" [href]="href" (click)="downloadImage()" download="QR_SVCBMF_{{directory.nombre}}_{{directory.surname}}">Download Image</a> -->
-                                        </div>
                                     </div>
 
                                 </div>
 
                                 <input type="hidden" formControlName="id">
-                                <button class="btn btn-outline-success waves-effect waves-light m-r-10" (click)="guardarDirectorio()" type="submit">Guardar</button>
-
 
                             </form>
 

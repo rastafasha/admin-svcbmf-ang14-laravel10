@@ -70,14 +70,14 @@
                                 <tr *ngFor="let user of usuarios |  paginate: { itemsPerPage: count, currentPage: p }">
 
                                     <td><a [routerLink]="['/dashboard/user/', user.id]">{{user.id}}</a></td>
-                                    <td><a [routerLink]="['/dashboard/user/', user.id]">{{user.username}}</a> </td>
+                                    <td><a [routerLink]="['/dashboard/user/', user.id]">{{user.name}} {{user.surname}}</a> </td>
                                     <td>{{user.email}}</td>
                                     <td>
                                         <!-- {{user.role }}  -->
-                                        <span class="badge bg-dark" *ngIf="user.role === 'SUPERADMIN'">SuperAdmin</span>
-                                        <span class="badge bg-primary" *ngIf="user.role === 'ADMIN'">Admin</span>
-                                        <span class="badge bg-success" *ngIf="user.role === 'MEMBER'">Miembro</span>
-                                        <span class="badge bg-danger" *ngIf="user.role === 'GUEST'">Invitado</span>
+                                        <span class="badge bg-dark" *ngIf="roles === 'SUPERADMIN'">SuperAdmin</span>
+                                        <span class="badge bg-primary" *ngIf="roles === 'ADMIN'">Admin</span>
+                                        <span class="badge bg-success" *ngIf="roles === 'MEMBER'">Miembro</span>
+                                        <span class="badge bg-danger" *ngIf="roles === 'GUEST'">Invitado</span>
                                     </td>
 
                                     <td class="text-nowrap text-center">

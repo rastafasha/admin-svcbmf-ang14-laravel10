@@ -54,6 +54,7 @@ import { NewsintagramComponent } from './manage/newsintagram/newsintagram.compon
 import { ViewTrabajosComponent } from './vistas/vista-trabajos/view-trabajos.component';
 import { ActualizacionesComponent } from './manage/actualizaciones/actualizaciones.component';
 import { UserEditComponent } from './user/user-edit/user-edit.component';
+import { FormActualizacionComponent } from './forms/form-actualizacion/form-actualizacion.component';
 
 
 
@@ -69,6 +70,7 @@ const childRoutes: Routes = [
 
     { path: 'rolesconf', component: RolesViewComponent, data:{title:'Planes'} },
     { path: 'actualizaciones', component: ActualizacionesComponent, data:{title:'Actualizaciones'} },
+    { path: 'actualizaciones/edit/:id', component: FormActualizacionComponent, data:{title:'Actualizaciones'} },
 
     //user
     { path: 'users', component: UsersComponent, data:{title:'Usuarios'} },

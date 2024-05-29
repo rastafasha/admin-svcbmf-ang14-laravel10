@@ -45,13 +45,18 @@ export class UsersComponent implements OnInit {
     window.scrollTo(0,0);
     this.userService.closeMenu();
     this.getUsers();
-    this.getUser();
+    // this.getUser();
+    let USER = localStorage.getItem("user");
+    this.user = JSON.parse(USER ? USER: '');
+    this.roles = this.user.roles[0];
+
   }
 
   getUser(): void {
     this.user = JSON.parse(localStorage.getItem('user'));
     // console.log(this.user);
     // console.log(this.user.id);
+    
   }
 
 
