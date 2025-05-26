@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
   // Registro
   public formSumitted = false;
   public registerForm = this.fb.group({
-    username: ['', Validators.required],
+    name: ['', Validators.required],
     email: [ '', [Validators.required] ],
     password: ['', Validators.required],
     password2: ['', Validators.required],
