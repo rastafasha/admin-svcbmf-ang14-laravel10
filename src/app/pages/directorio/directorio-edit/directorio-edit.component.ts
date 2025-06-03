@@ -194,7 +194,7 @@ this.user = this.userService.user;
 
 
 
-  guardarDirectorio() {debugger
+  guardarDirectorio() {
     this.submitted = true;
     if(this.directorioForm.invalid){
       return;
