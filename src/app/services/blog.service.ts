@@ -32,7 +32,7 @@ export class BlogService {
   
   createBlog(data:any) {
     let headers = new HttpHeaders({'Authorization': 'Bearer'+this.authService.token});
-    let URL = this.serverUrl+"/blog/store/";
+    let URL = this.serverUrl+"/blog/store";
     return this.http.post(URL,data,{headers:headers});
   }
 

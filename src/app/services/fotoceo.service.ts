@@ -32,7 +32,7 @@ export class FotoceoService {
 
   createFotoceo(data:any) {
     let headers = new HttpHeaders({'Authorization': 'Bearer'+this.authService.token});
-    let URL = this.serverUrl+"/fotoceo/store/";
+    let URL = this.serverUrl+"/fotoceo/store";
     return this.http.post(URL,data,{headers:headers});
   }
 

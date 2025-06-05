@@ -33,7 +33,7 @@ export class DirregionalService {
 
   createDirRegional(data:any) {
     let headers = new HttpHeaders({'Authorization': 'Bearer'+this.authService.token});
-    let URL = this.serverUrl+"/dirregional/store/";
+    let URL = this.serverUrl+"/dirregional/store";
     return this.http.post(URL,data,{headers:headers});
     
   }

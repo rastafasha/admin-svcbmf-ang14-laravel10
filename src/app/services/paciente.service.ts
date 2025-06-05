@@ -32,7 +32,7 @@ export class PacienteService {
   
   createPaciente(data:any) {
     let headers = new HttpHeaders({'Authorization': 'Bearer'+this.authService.token});
-    let URL = this.serverUrl+"/areapaciente/store/";
+    let URL = this.serverUrl+"/areapaciente/store";
     return this.http.post(URL,data,{headers:headers});
     
   }

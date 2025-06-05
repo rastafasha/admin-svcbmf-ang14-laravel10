@@ -30,7 +30,7 @@ export class CeoService {
 
   createCeo(data:any) {
     let headers = new HttpHeaders({'Authorization': 'Bearer'+this.authService.token});
-    let URL = this.serverUrl+"/ceo/store/";
+    let URL = this.serverUrl+"/ceo/store";
     return this.http.post(URL,data,{headers:headers});
     
   }

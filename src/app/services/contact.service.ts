@@ -24,7 +24,7 @@ export class ContactService {
   }
 
   getContacts() {
-    return this.http.get<Contact>(this.serverUrl + 'api_contact/adminContacts/').pipe(
+    return this.http.get<Contact>(this.serverUrl + 'api_contact/adminContacts').pipe(
       catchError(this.handleError)
     );
   }

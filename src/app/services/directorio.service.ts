@@ -58,7 +58,7 @@ export class DirectorioService {
 
   createDirectorio(data:any) {
     let headers = new HttpHeaders({'Authorization': 'Bearer'+this.authService.token});
-    let URL = apiUrl+"/directory/store/";
+    let URL = apiUrl+"/directory/store";
     return this.http.post(URL,data,{headers:headers});
     
   }

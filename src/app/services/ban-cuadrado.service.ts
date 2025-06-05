@@ -32,7 +32,7 @@ export class BanncuadradoService {
   
   createBancuadrado(data:any) {
     let headers = new HttpHeaders({'Authorization': 'Bearer'+this.authService.token});
-    let URL = this.serverUrl+"/bancuadrados/store/";
+    let URL = this.serverUrl+"/bancuadrados/store";
     return this.http.post(URL,data,{headers:headers});
     
   }

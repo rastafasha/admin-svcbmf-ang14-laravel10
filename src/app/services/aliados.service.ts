@@ -33,7 +33,7 @@ export class AliadoService {
   
   createAliado(data:any) {
     let headers = new HttpHeaders({'Authorization': 'Bearer'+this.authService.token});
-    let URL = this.serverUrl+"/aliados/store/";
+    let URL = this.serverUrl+"/aliados/store";
     return this.http.post(URL,data,{headers:headers});
     
   }

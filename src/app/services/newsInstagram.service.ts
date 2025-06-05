@@ -15,7 +15,7 @@ export class NewsInstagramService {
   constructor(private http: HttpClient) { }
 
   getNewsIntagrams() {
-    return this.http.get<NewsInstagram>(this.serverUrl + 'api_newsinstagram/adminNewsinstagrams/').pipe(
+    return this.http.get<NewsInstagram>(this.serverUrl + 'api_newsinstagram/adminNewsinstagrams').pipe(
       catchError(this.handleError)
     );
   }

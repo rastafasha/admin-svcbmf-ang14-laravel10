@@ -1,7 +1,7 @@
 self.addEventListener('fetch', event => {
   const { request } = event;
-  if (request.method === 'POST') {
-    // Handle POST request or let it pass through
+  if (request.method === 'POST' || request.method === 'GET') {
+    // Allow POST and GET requests to pass through
     event.respondWith(fetch(request));
   } else {
     // Return 405 Method Not Allowed for other methods

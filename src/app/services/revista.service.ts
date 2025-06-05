@@ -32,7 +32,7 @@ export class RevistaService {
   
   createRevista(data:any) {
     let headers = new HttpHeaders({'Authorization': 'Bearer'+this.authService.token});
-    let URL = this.serverUrl+"/revistas/store/";
+    let URL = this.serverUrl+"/revistas/store";
     return this.http.post(URL,data,{headers:headers});
     
 

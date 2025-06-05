@@ -33,7 +33,7 @@ export class AfiliacionesService {
   
   createAfiliacione(data:any) {
     let headers = new HttpHeaders({'Authorization': 'Bearer'+this.authService.token});
-    let URL = this.serverUrl+"/afiliaciones/store/";
+    let URL = this.serverUrl+"/afiliaciones/store";
     return this.http.post(URL,data,{headers:headers});
     
   }

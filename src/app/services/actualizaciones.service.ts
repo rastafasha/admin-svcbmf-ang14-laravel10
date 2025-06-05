@@ -30,7 +30,7 @@ export class ActualizacionesService {
   
   createActualizacion(data:any) {
     let headers = new HttpHeaders({'Authorization': 'Bearer'+this.authService.token});
-    let URL = apiUrl+"/actualizacion/store/";
+    let URL = apiUrl+"/actualizacion/store";
     return this.http.post(URL,data,{headers:headers});
     
   }

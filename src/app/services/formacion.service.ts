@@ -25,7 +25,7 @@ export class FormacionService {
 
   getFormacion(id: any) {
     let headers = new HttpHeaders({'Authorization': 'Bearer'+this.authService.token});
-    let URL = this.serverUrl+"/formacions/show/"+id;
+    let URL = this.serverUrl+"/formacions/show"+id;
     return this.http.get(URL,{headers:headers});
   }
 

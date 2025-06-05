@@ -21,7 +21,7 @@ export class TrabajosService {
   constructor(private http: HttpClient) { }
 
   getTrabajos() {
-    return this.http.get<Trabajo>(this.serverUrl + 'api_trabajo/adminTrabajos/').pipe(
+    return this.http.get<Trabajo>(this.serverUrl + 'api_trabajo/adminTrabajos').pipe(
       catchError(this.handleError)
     );
   }

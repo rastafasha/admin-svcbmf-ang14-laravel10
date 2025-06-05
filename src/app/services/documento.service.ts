@@ -32,7 +32,7 @@ export class DocumentoService {
   
   createDocumento(data:any) {
     let headers = new HttpHeaders({'Authorization': 'Bearer'+this.authService.token});
-    let URL = this.serverUrl+"/documento/store/";
+    let URL = this.serverUrl+"/documento/store";
     return this.http.post(URL,data,{headers:headers});
     
   }

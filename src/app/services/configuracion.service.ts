@@ -33,7 +33,7 @@ export class ConfiguracionService {
 
   createSetting(data:any) {
     let headers = new HttpHeaders({'Authorization': 'Bearer'+this.authService.token});
-    let URL = this.serverUrl+"/setting/store/";
+    let URL = this.serverUrl+"/setting/store";
     return this.http.post(URL,data,{headers:headers});
     
   }

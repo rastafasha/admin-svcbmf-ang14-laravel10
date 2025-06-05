@@ -34,7 +34,7 @@ export class SliderService {
   
   createSlider(data:any) {
     let headers = new HttpHeaders({'Authorization': 'Bearer'+this.authService.token});
-    let URL = this.serverUrl+"/slider/store/";
+    let URL = this.serverUrl+"/slider/store";
     return this.http.post(URL,data,{headers:headers});
     
   }
