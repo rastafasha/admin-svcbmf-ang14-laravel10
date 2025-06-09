@@ -17,6 +17,8 @@ export class CeomanageComponent implements OnInit {
   ceos: Ceo;
   error: string;
   public cargo;
+  isAgregar:boolean =true
+  isEditar:boolean =true
 
   ServerUrl = environment.apiUrl;
   private http: HttpClient;

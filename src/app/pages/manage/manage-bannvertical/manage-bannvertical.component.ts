@@ -15,6 +15,8 @@ export class ManageBannverticalComponent implements OnInit {
   title = 'Manage Banner Vertical';
   banverticals: Banvertical;
   error: string;
+  isAgregar:boolean= true;
+isEditar:boolean= false;
 
   ServerUrl = environment.apiUrl;
   private http: HttpClient;

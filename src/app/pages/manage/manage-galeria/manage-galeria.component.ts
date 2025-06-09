@@ -16,7 +16,8 @@ export class ManageGaleriaComponent implements OnInit {
   galerias: Galeria;
   error: string;
   data:string;
-
+  isAgregar:boolean= true;
+isEditar:boolean= false;
 
   p: Number = 1;
   count: Number = 8;

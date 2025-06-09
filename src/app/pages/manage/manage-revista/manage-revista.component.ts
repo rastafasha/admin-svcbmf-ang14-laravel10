@@ -18,7 +18,8 @@ export class ManageRevistaComponent implements OnInit {
 
   ServerUrl = environment.apiUrl;
   private http: HttpClient;
-
+  isAgregar:boolean= true;
+isEditar:boolean= false;
   p: Number = 1;
   count: Number = 10;
 

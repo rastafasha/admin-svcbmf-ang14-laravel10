@@ -4,6 +4,7 @@ export class Blog {
     autor: string;
     seo_title: string;
     user_id: number;
+    category_id: number;
     description: string;
     image: string;
     is_featured: boolean;

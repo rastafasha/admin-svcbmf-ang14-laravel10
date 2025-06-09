@@ -17,6 +17,8 @@ export class FotoceomanageComponent implements OnInit {
   title = 'Foto Principal ';
   fotoceos: Fotoceo;
   error: string;
+  isAgregar:boolean= false;
+  isEditar:boolean= false;
 
   ServerUrl = environment.apiUrl;
   private http: HttpClient;

@@ -3,6 +3,9 @@ import { BlogService } from '../../../services/blog.service';
 import { UntypedFormBuilder, Validators, UntypedFormGroup } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
+import { CategoriaService } from 'src/app/services/categoria.service';
+import { Categoria } from 'src/app/models/categoria';
+import { Blog } from 'src/app/models/blog';
 
 
 
@@ -30,15 +33,17 @@ export class FormsBlogComponent implements OnInit {
   valid_form:boolean = false;
   valid_form_success:boolean = false;
   text_validation:any = null;
-
-
+  categorias:Categoria;
+  categoria:Categoria;
+  category_id:Blog;
 
   constructor(
     private fb: UntypedFormBuilder,
     private blogService: BlogService,
     private router: Router,
     private ativatedRoute: ActivatedRoute,
-    private location: Location
+    private location: Location,
+    private categoriaService: CategoriaService,
   ) { }
 
   ngOnInit() {
@@ -46,7 +51,7 @@ export class FormsBlogComponent implements OnInit {
     let USER = localStorage.getItem("user");// se solicita el usuario logueado
     this.user = JSON.parse(USER ? USER: ''); //  si no hay un usuario en el localstorage retorna un objeto vacio
     this.user_id = this.user.id;  //se asigna el doctor logueado a este campo para poderlo enviar en los
-
+    this.getCategorias();
     this.ativatedRoute.params.subscribe((resp:any)=>{
       this.blog_id = resp.id; 
      })
@@ -62,6 +67,8 @@ export class FormsBlogComponent implements OnInit {
             description: res.blog.description,
             is_featured: res.blog.is_featured,
             is_active: res.blog.is_active,
+            category_id: res.blog.category_id,
+            FILE_AVATAR: res.blog.avatar,
             id: res.blog.id
           });
           this.imagePath = res.image;
@@ -75,11 +82,25 @@ export class FormsBlogComponent implements OnInit {
       id: [''],
       title: ['', Validators.required],
       description: ['', Validators.required],
-      is_featured: ['0'],
-      is_active: ['1'],
+      is_featured: [''],
+      is_active: [''],
+      category_id: [''],
+      user_id: [''],
       image: [''],
     });
 
+  }
+
+  getCategorias(){
+      this.categoriaService.getCategorias().subscribe((resp: any) => {
+        this.categorias= resp.categories;
+        // console.log(this.tiposdepagos);
+      });
+  }
+
+  onChangeCategory(category_id: any): void {
+    this.category_id = category_id;
+    // console.log(cal);
   }
 
   loadFile($event:any){
@@ -97,14 +118,16 @@ export class FormsBlogComponent implements OnInit {
   get title() { return this.blogForm.get('title'); }
   get description() { return this.blogForm.get('description'); }
 
-  onSubmit () {
+  onSubmit () {debugger
     const formData = new FormData();
     formData.append('title', this.blogForm.get('title').value);
     formData.append('description', this.blogForm.get('description').value);
     formData.append('is_featured', this.blogForm.get('is_featured').value);
     formData.append('is_active', this.blogForm.get('is_active').value);
+    formData.append('category_id', this.blogForm.get('category_id').value);
     // formData.append('image', this.blogForm.get('image').value);
     formData.append('user_id', this.user_id);
+    // formData.append('category_id', this.category_id+'');
     
     if(this.FILE_AVATAR){
       formData.append('imagen', this.FILE_AVATAR);

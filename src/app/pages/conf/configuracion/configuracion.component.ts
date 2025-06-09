@@ -18,7 +18,7 @@ export class ConfiguracionComponent implements OnInit {
   imagePath: string;
 
   configForm: UntypedFormGroup;
-
+  title= 'Configuración';
 
 
   constructor(

@@ -26,15 +26,15 @@
                     <div class="form-group form-row">
                         <label class="col-md-3">Activo</label>
                         <div class="col-md-9">
-                            <input type="radio" formControlName="is_active" value="1" /> Si
-                            <input type="radio" formControlName="is_active" value="0" /> No
+                            <input type="radio" formControlName="is_active" [value]="1" /> Si
+                            <input type="radio" formControlName="is_active" [value]="0" /> No
                         </div>
                     </div>
                     <div class=" form-group form-row">
                         <label class="col-md-3">Destactado</label>
                         <div class="col-md-9 demo-radio-button">
-                            <input type="radio" class="radio-col-green " formControlName="is_featured" value="1" mdbInput> Yes
-                            <input type="radio" class="radio-col-red" formControlName="is_featured" value="0" mdbInput> No
+                            <input type="radio" class="radio-col-green " formControlName="is_featured" [value]="1" mdbInput> Yes
+                            <input type="radio" class="radio-col-red" formControlName="is_featured" [value]="0" mdbInput> No
                         </div>
                     </div>
                     <div class="form-group form-row">

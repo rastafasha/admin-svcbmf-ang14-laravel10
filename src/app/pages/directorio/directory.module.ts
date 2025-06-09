@@ -20,6 +20,7 @@ import { QRCodeModule } from 'angular2-qrcode';
 // paginacion
 import { NgxPaginationModule } from 'ngx-pagination';
 import { CKEditorModule } from 'ckeditor4-angular';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import { CKEditorModule } from 'ckeditor4-angular';
     AngularFileUploaderModule,
     QRCodeModule,
     NgxPaginationModule,
-    CKEditorModule
+    CKEditorModule,
+    SharedModule
   ]
 })
 export class DirectoryModule { }

@@ -67,16 +67,20 @@
                                     <td>{{user.email}} </td>
                                     <td>
 
-                                        <span class="badge bg-dark" *ngIf="user.roles[0] === 'SUPERADMIN'">SuperAdmin</span>
-                                        <span class="badge bg-primary" *ngIf="user.roles[0] === 'ADMIN'">Admin</span>
+                                        <span class="badge bg-dark" *ngIf="user.roles[0].name === 'SUPERADMIN'">SuperAdmin</span>
+                                        <span class="badge bg-primary" *ngIf="user.roles[0].name === 'ADMIN'">Admin</span>
+                                        <span class="badge bg-danger" *ngIf="user.roles[0].name === 'GUEST'">Invitado</span>
+                                        <span class="badge bg-success" *ngIf="user.roles[0].name === 'DOCTOR'">Invitado</span>
 
                                     </td>
                                     <td>
 
 
-                                  <select class="form-control" [(ngModel)]="user.roles[0]" (change)="cambiarRole(user)">
+                                  <select class="form-control" [(ngModel)]="user.roles" (change)="cambiarRole(user)">
                                     <option value="SUPERADMIN">SuperAdmin</option>
                                     <option value="ADMIN">Admin</option>
+                                    <option value="GUEST">Invitado</option>
+                                    <option value="DOCTOR">Doctor</option>
                                   </select>
 
                                     </td>

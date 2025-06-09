@@ -15,7 +15,8 @@ export class ManageSliderComponent implements OnInit {
   title = 'Manage Slider';
   sliders: Slider;
   error: string;
-
+  isAgregar:boolean= true;
+isEditar:boolean= false;
   ServerUrl = environment.apiUrl;
   private http: HttpClient;
 

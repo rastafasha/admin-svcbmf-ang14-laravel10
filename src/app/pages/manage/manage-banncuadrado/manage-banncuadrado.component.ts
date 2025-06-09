@@ -15,6 +15,8 @@ export class ManageBanncuadradoComponent implements OnInit {
   title = 'Manage Banner Cuadrado';
   bancuadrados: Bancuadrado;
   error: string;
+  isAgregar:boolean=true;
+isEditar:boolean=false
 
   ServerUrl = environment.apiUrl;
   private http: HttpClient;

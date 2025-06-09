@@ -18,6 +18,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { NgxPayPalModule } from 'ngx-paypal';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxSpinnerModule } from "ngx-spinner";
+import { BackAreaComponent } from './back-area/back-area.component';
 
 
 
@@ -38,12 +39,14 @@ declarations: [
     MenuComponent,
     FooterComponent,
     MenuiconosComponent,
+    BackAreaComponent,
 ],
 exports: [
     HeaderComponent,
     MenuComponent,
     FooterComponent,
     MenuiconosComponent,
+    BackAreaComponent,
 ]
 })
 export class SharedModule { }

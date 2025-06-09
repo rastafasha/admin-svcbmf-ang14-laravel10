@@ -15,6 +15,8 @@ export class ManagePacientesComponent implements OnInit {
   title = 'Manage Tips Pacientes';
   pacientes: Paciente;
   error: string;
+  isAgregar:boolean= true;
+isEditar:boolean= false;
 
   ServerUrl = environment.apiUrl;
   private http: HttpClient;

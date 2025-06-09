@@ -15,6 +15,8 @@ export class ManageBannhorizontalComponent implements OnInit {
   title = 'Manage Banner Horizontal';
   banhorizontals: Banhorizontal;
   error: string;
+  isAgregar:boolean= true;
+isEditar:boolean= false;
 
   ServerUrl = environment.apiUrl;
   private http: HttpClient;

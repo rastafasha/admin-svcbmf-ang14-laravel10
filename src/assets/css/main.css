@@ -105,6 +105,11 @@ b{
     justify-content: center;
 }
 
+.cardtop {
+    display: flex;
+    justify-content: space-between;
+}
+
 
 /* Breadcrumbs */
 

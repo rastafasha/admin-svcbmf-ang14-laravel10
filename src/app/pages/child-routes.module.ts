@@ -55,6 +55,8 @@ import { ViewTrabajosComponent } from './vistas/vista-trabajos/view-trabajos.com
 import { ActualizacionesComponent } from './manage/actualizaciones/actualizaciones.component';
 import { UserEditComponent } from './user/user-edit/user-edit.component';
 import { FormActualizacionComponent } from './forms/form-actualizacion/form-actualizacion.component';
+import { Categoria } from '../models/categoria';
+import { CategoriaComponent } from './categoria/categoria.component';
 
 
 
@@ -72,6 +74,7 @@ const childRoutes: Routes = [
     { path: 'actualizaciones', component: ActualizacionesComponent, data:{title:'Actualizaciones'} },
     { path: 'actualizaciones/edit/:id', component: FormActualizacionComponent, data:{title:'Actualizaciones'} },
 
+    
     //user
     { path: 'users', component: UsersComponent, data:{title:'Usuarios'} },
     { path: 'users/create', component: UserEditComponent, data:{title:'Detalle Usuario'} },
@@ -172,6 +175,7 @@ const childRoutes: Routes = [
     //canActivate: [AuthGuard],
     component: FormsBlogComponent
 },
+{ path: 'categorias', component: CategoriaComponent, data:{title:'Categoria'} },
 
 {
     path: 'revista',

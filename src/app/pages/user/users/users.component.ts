@@ -22,6 +22,8 @@ export class UsersComponent implements OnInit {
   user: User;
   roles;
 
+  isAgregar:boolean= true;
+isEditar:boolean= false
   p: number = 1;
   count: number = 8;
 

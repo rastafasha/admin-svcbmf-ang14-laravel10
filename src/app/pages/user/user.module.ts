@@ -43,7 +43,8 @@ import { QRCodeModule } from 'angular2-qrcode';
     AngularFileUploaderModule,
     QRCodeModule,
     NgxPaginationModule,
-    CKEditorModule
+    CKEditorModule,
+    SharedModule
   ]
 })
 export class UserModule { }

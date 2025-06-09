@@ -16,7 +16,8 @@ export class ManageUsuariosComponent implements OnInit {
   title = 'Usuarios Registrados';
   users: User;
   error: string;
-
+  isAgregar:boolean= true;
+isEditar:boolean= false;
   ServerUrl = environment.apiUrl;
   private http: HttpClient;
 

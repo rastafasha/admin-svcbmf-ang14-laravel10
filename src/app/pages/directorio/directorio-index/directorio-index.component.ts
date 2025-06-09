@@ -24,6 +24,8 @@ export class DirectorioIndexComponent implements OnInit {
   usuarios: User[]=[];
   user: User;
   directory: Directorio;
+  isAgregar:boolean= false;
+  isEditar:boolean= false;
   
   p: number = 1;
   count: number = 8;

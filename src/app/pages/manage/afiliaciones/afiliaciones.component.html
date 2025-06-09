@@ -1,20 +1,28 @@
-<div class="row page-titles">
-    <div class="col-12 animated fadeInUp">
-        <div class="card cardtop">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-12 col-sm-8 align-self-center">
+<div class="col-12 animated fadeInUp " >
+        <div class="card  shadow" style="border-radius: 14px;">
+            <div class="card-body ">
+                <div class="cardtop">
+                    <div class="">
                         <h3 class="text-themecolor">{{title}}</h3>
                     </div>
-                    <div class="col-12 col-sm-4 botones pull-right">
-                        <button class="btn btn-outline-danger" href="javascript:void(0)" (click)="goBack()">Volver</button>
-                        <button class="btn btn-success" [routerLink]="['/dashboard/afiliaciones/create/']">Agregar Nuevo</button>
+                    
+                    <div class="">
+                        <button class="btn btn-outline-danger" href="javascript:void(0)"
+                            (click)="goBack()">Volver</button>
+                            <button class="btn btn-success" [routerLink]="['/dashboard/afiliaciones/create/']">Agregar Nuevo</button>
                     </div>
                 </div>
+                
             </div>
         </div>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a routerLink="/"><i class="fa fa-home"></i> Inicio</a></li>
+                <!-- <li class="breadcrumb-item"><a routerLink="/dashboard/directorio">Directorio</a></li> -->
+                <li class="breadcrumb-item active">{{title}}</li>
+            </ol>
+        </nav>
     </div>
-</div>
 <!--Including the pagination control.-->
 <div class="row ">
     <div class="text-center mt-4 mb-4">

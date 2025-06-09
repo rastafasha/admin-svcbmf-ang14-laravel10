@@ -15,7 +15,8 @@ export class ManageFormacionComponent implements OnInit {
   title = 'Manage Formacion ';
   formacions: Formacion;
   error: string;
-
+  isAgregar:boolean= true;
+isEditar:boolean= false;
   ServerUrl = environment.apiUrl;
   private http: HttpClient;
 

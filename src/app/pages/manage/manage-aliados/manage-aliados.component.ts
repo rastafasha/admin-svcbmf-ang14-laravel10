@@ -15,6 +15,8 @@ export class ManageAliadosComponent implements OnInit {
   title = 'Manage Aliados';
   aliados: Aliado;
   error: string;
+  isAgregar:boolean= true
+isEditar:boolean= false
 
   ServerUrl = environment.apiUrl;
   private http: HttpClient;
