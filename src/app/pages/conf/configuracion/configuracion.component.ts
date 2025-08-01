@@ -39,6 +39,7 @@ export class ConfiguracionComponent implements OnInit {
           this.configForm.patchValue({
             direccion: res.setting.direccion,
             telefono: res.setting.telefono,
+            email: res.setting.email,
             telefonoActivo: res.setting.telefonoActivo,
             telPresidencia: res.setting.telPresidencia,
             telPresActivo: res.setting.telPresActivo,
@@ -58,6 +59,7 @@ export class ConfiguracionComponent implements OnInit {
       id: [''],
       direccion: [''],
       telefono: [''],
+      email: [''],
       telefonoActivo: [''],
       telPresidencia: [''],
       telPresActivo: [''],
@@ -78,6 +80,7 @@ export class ConfiguracionComponent implements OnInit {
 
   get direccion() { return this.configForm.get('direccion'); }
   get telefono() { return this.configForm.get('telefono'); }
+  get email() { return this.configForm.get('email'); }
   get telefonoActivo() { return this.configForm.get('telefonoActivo'); }
   get telPresidencia() { return this.configForm.get('telPresidencia'); }
   get telPresActivo() { return this.configForm.get('telPresActivo'); }
@@ -89,6 +92,7 @@ export class ConfiguracionComponent implements OnInit {
   onSubmit () {
     const formData = new FormData();
     formData.append('direccion', this.configForm.get('direccion').value);
+    formData.append('email', this.configForm.get('email').value);
     formData.append('telefono', this.configForm.get('telefono').value);
     formData.append('telefonoActivo', this.configForm.get('telefonoActivo').value);
     formData.append('telPresidencia', this.configForm.get('telPresidencia').value);
