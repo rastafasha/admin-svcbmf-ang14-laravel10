@@ -3,6 +3,7 @@ import { AliadoService } from '../../../services/aliados.service';
 import { UntypedFormBuilder, Validators, UntypedFormGroup } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-forms-aliados',
@@ -107,7 +108,21 @@ export class FormsAliadosComponent implements OnInit {
         (res:any) => {
           if (res.status === 'error') {
             this.uploadError = res.message;
+            Swal.fire({
+                          position: 'top-end',
+                          icon: 'warning',
+                          title: res.message,
+                          showConfirmButton: false,
+                          timer: 1500,
+                        });
           } else {
+            Swal.fire({
+                          position: 'top-end',
+                          icon: 'success',
+                          title: res.message,
+                          showConfirmButton: false,
+                          timer: 1500,
+                        });
             this.router.navigate(['/dashboard/aliados']);
           }
         },
@@ -117,8 +132,22 @@ export class FormsAliadosComponent implements OnInit {
       this.aliadoService.createAliado(formData).subscribe(
         (res:any) => {
           if (res.status === 'error') {
-            this.uploadError = res.message;
+            // this.uploadError = res.message;
+            Swal.fire({
+                          position: 'top-end',
+                          icon: 'warning',
+                          title: res.message,
+                          showConfirmButton: false,
+                          timer: 1500,
+                        });
           } else {
+            Swal.fire({
+                          position: 'top-end',
+                          icon: 'success',
+                          title: res.message,
+                          showConfirmButton: false,
+                          timer: 1500,
+                        });
             this.router.navigate(['/dashboard/aliados']);
           }
         },

@@ -3,16 +3,14 @@ import { DirregionalService } from '../../../services/dirregional.service';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-
-
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-forms-dirregional',
   templateUrl: './forms-dirregional.component.html',
-  styleUrls: ['./forms-dirregional.component.css']
+  styleUrls: ['./forms-dirregional.component.css'],
 })
 export class FormsDirregionalComponent implements OnInit {
-
   pageTitle: string;
   error: string;
   uploadError: string;
@@ -26,26 +24,23 @@ export class FormsDirregionalComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private location: Location
-  ) { }
+  ) {}
 
   ngOnInit() {
-
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
       this.pageTitle = 'Edit Directiva Regional';
-      this.dirregionalService.getDirRegional(+id).subscribe(
-        (resp:any) => {
-          this.dirregionalForm.patchValue({
-            title: resp.dirregional.title,
-            presidente: resp.dirregional.presidente,
-            secretario: resp.dirregional.secretario,
-            tesorero: resp.dirregional.tesorero,
-            vocal: resp.dirregional.vocal,
-            primerSuplente: resp.dirregional.primerSuplente,
-            id: resp.dirregional.id
-          });
-        }
-      );
+      this.dirregionalService.getDirRegional(+id).subscribe((resp: any) => {
+        this.dirregionalForm.patchValue({
+          title: resp.dirregional.title,
+          presidente: resp.dirregional.presidente,
+          secretario: resp.dirregional.secretario,
+          tesorero: resp.dirregional.tesorero,
+          vocal: resp.dirregional.vocal,
+          primerSuplente: resp.dirregional.primerSuplente,
+          id: resp.dirregional.id,
+        });
+      });
     } else {
       this.pageTitle = 'Create Directiva Regional';
     }
@@ -61,41 +56,76 @@ export class FormsDirregionalComponent implements OnInit {
     });
   }
 
-  get title() { return this.dirregionalForm.get('title'); }
-  get presidente() { return this.dirregionalForm.get('presidente'); }
+  get title() {
+    return this.dirregionalForm.get('title');
+  }
+  get presidente() {
+    return this.dirregionalForm.get('presidente');
+  }
 
-  onSubmit () {
+  onSubmit() {
     const formData = new FormData();
     formData.append('title', this.dirregionalForm.get('title').value);
     formData.append('presidente', this.dirregionalForm.get('presidente').value);
     formData.append('secretario', this.dirregionalForm.get('secretario').value);
     formData.append('tesorero', this.dirregionalForm.get('tesorero').value);
     formData.append('vocal', this.dirregionalForm.get('vocal').value);
-    formData.append('primerSuplente', this.dirregionalForm.get('primerSuplente').value);
+    formData.append(
+      'primerSuplente',
+      this.dirregionalForm.get('primerSuplente').value
+    );
 
     const id = this.dirregionalForm.get('id').value;
 
     if (id) {
       this.dirregionalService.updateDirRegional(formData, +id).subscribe(
-        (res:any) => {
+        (res: any) => {
           if (res.status === 'error') {
-            this.uploadError = res.message;
+            // this.uploadError = res.message;
+            Swal.fire({
+              position: 'top-end',
+              icon: 'warning',
+              title: res.message,
+              showConfirmButton: false,
+              timer: 1500,
+            });
           } else {
+            Swal.fire({
+              position: 'top-end',
+              icon: 'success',
+              title: res.message,
+              showConfirmButton: false,
+              timer: 1500,
+            });
             this.router.navigate(['/dashboard/dirregional']);
           }
         },
-        error => this.error = error
+        (error) => (this.error = error)
       );
     } else {
       this.dirregionalService.createDirRegional(formData).subscribe(
-        (res:any) => {
+        (res: any) => {
           if (res.status === 'error') {
-            this.uploadError = res.message;
+            // this.uploadError = res.message;
+            Swal.fire({
+              position: 'top-end',
+              icon: 'warning',
+              title: res.message,
+              showConfirmButton: false,
+              timer: 1500,
+            });
           } else {
+            Swal.fire({
+              position: 'top-end',
+              icon: 'success',
+              title: res.message,
+              showConfirmButton: false,
+              timer: 1500,
+            });
             this.router.navigate(['/dashboard/dirregional']);
           }
         },
-        error => this.error = error
+        (error) => (this.error = error)
       );
     }
   }
@@ -104,11 +134,12 @@ export class FormsDirregionalComponent implements OnInit {
     this.location.back(); // <-- go back to previous location on cancel
   }
 
-  public onReady( editor ) {
-    editor.ui.getEditableElement().parentElement.insertBefore(
+  public onReady(editor) {
+    editor.ui
+      .getEditableElement()
+      .parentElement.insertBefore(
         editor.ui.view.toolbar.element,
         editor.ui.getEditableElement()
-    );
-}
-
+      );
+  }
 }

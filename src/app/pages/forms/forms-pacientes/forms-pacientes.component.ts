@@ -3,6 +3,7 @@ import { PacienteService } from '../../../services/paciente.service';
 import { UntypedFormBuilder, Validators, UntypedFormGroup } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -105,8 +106,22 @@ export class FormsPacientesComponent implements OnInit {
       this.pacienteService.updatePaciente(formData, +id).subscribe(
         (res:any) => {
           if (res.status === 'error') {
-            this.uploadError = res.message;
+            // this.uploadError = res.message;
+            Swal.fire({
+                          position: 'top-end',
+                          icon: 'warning',
+                          title: res.message,
+                          showConfirmButton: false,
+                          timer: 1500,
+                        });
           } else {
+            Swal.fire({
+                          position: 'top-end',
+                          icon: 'success',
+                          title: res.message,
+                          showConfirmButton: false,
+                          timer: 1500,
+                        });
             this.router.navigate(['/dashboard/pacientes']);
           }
         },
@@ -116,8 +131,22 @@ export class FormsPacientesComponent implements OnInit {
       this.pacienteService.createPaciente(formData).subscribe(
         (res:any) => {
           if (res.status === 'error') {
-            this.uploadError = res.message;
+            // this.uploadError = res.message;
+            Swal.fire({
+                          position: 'top-end',
+                          icon: 'warning',
+                          title: res.message,
+                          showConfirmButton: false,
+                          timer: 1500,
+                        });
           } else {
+            Swal.fire({
+                          position: 'top-end',
+                          icon: 'success',
+                          title: res.message,
+                          showConfirmButton: false,
+                          timer: 1500,
+                        });
             this.router.navigate(['/dashboard/pacientes']);
           }
         },

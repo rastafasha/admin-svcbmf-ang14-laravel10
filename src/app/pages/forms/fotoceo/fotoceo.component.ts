@@ -121,12 +121,20 @@ export class FotoceoComponent implements OnInit {
           if (res.status === 'error' && res.data ) {
             //this.uploadError = res.message;
             Swal.fire({
-              icon: 'error',
-              title: 'Oops...',
-              text: 'Ocurrión un error, vuelva a intentar!',
-            });
+                          position: 'top-end',
+                          icon: 'warning',
+                          title: res.message,
+                          showConfirmButton: false,
+                          timer: 1500,
+                        });
           } else {
-            Swal.fire('Guardado', 'Los cambios fueron actualizados', 'success');
+            Swal.fire({
+                          position: 'top-end',
+                          icon: 'success',
+                          title: res.message,
+                          showConfirmButton: false,
+                          timer: 1500,
+                        });
             this.router.navigate(['/dashboard/fotoceo']);
           }
         },
@@ -138,12 +146,20 @@ export class FotoceoComponent implements OnInit {
           if (res.status === 'error' ) {
             //this.uploadError = res.message;
             Swal.fire({
-              icon: 'error',
-              title: 'Oops...',
-              text: 'Ocurrión un error, vuelva a intentar!',
-            });
+                          position: 'top-end',
+                          icon: 'warning',
+                          title: res.message,
+                          showConfirmButton: false,
+                          timer: 1500,
+                        });
           } else {
-            Swal.fire('Guardado', 'Los cambios fueron creados', 'success');
+            Swal.fire({
+                          position: 'top-end',
+                          icon: 'success',
+                          title: res.message,
+                          showConfirmButton: false,
+                          timer: 1500,
+                        });
             this.router.navigate(['/dashboard/fotoceo']);
 
           }

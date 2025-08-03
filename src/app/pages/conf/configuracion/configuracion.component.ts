@@ -1,25 +1,27 @@
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormBuilder, Validators, UntypedFormGroup } from '@angular/forms';
+import {
+  UntypedFormBuilder,
+  Validators,
+  UntypedFormGroup,
+} from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { ConfiguracionService } from 'src/app/services/configuracion.service';
-
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-configuracion',
   templateUrl: './configuracion.component.html',
-  styleUrls: ['./configuracion.component.css']
+  styleUrls: ['./configuracion.component.css'],
 })
 export class ConfiguracionComponent implements OnInit {
-
   pageTitle: string;
   error: string;
   uploadError: string;
   imagePath: string;
 
   configForm: UntypedFormGroup;
-  title= 'Configuración';
-
+  title = 'Configuración';
 
   constructor(
     private fb: UntypedFormBuilder,
@@ -27,30 +29,27 @@ export class ConfiguracionComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private location: Location
-  ) { }
+  ) {}
 
   ngOnInit() {
-
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
       this.pageTitle = 'Edit Configuración';
-      this.configuracionService.getSetting(+id).subscribe(
-        (res:any) => {
-          this.configForm.patchValue({
-            direccion: res.setting.direccion,
-            telefono: res.setting.telefono,
-            email: res.setting.email,
-            telefonoActivo: res.setting.telefonoActivo,
-            telPresidencia: res.setting.telPresidencia,
-            telPresActivo: res.setting.telPresActivo,
-            telSecretaria: res.setting.telSecretaria,
-            telSecActivo: res.setting.telSecActivo,
-            telTesoreria: res.setting.telTesoreria,
-            telTesActivo: res.setting.telTesActivo,
-            id: res.setting.id
-          });
-        }
-      );
+      this.configuracionService.getSetting(+id).subscribe((res: any) => {
+        this.configForm.patchValue({
+          direccion: res.setting.direccion,
+          telefono: res.setting.telefono,
+          email: res.setting.email,
+          telefonoActivo: res.setting.telefonoActivo,
+          telPresidencia: res.setting.telPresidencia,
+          telPresActivo: res.setting.telPresActivo,
+          telSecretaria: res.setting.telSecretaria,
+          telSecActivo: res.setting.telSecActivo,
+          telTesoreria: res.setting.telTesoreria,
+          telTesActivo: res.setting.telTesActivo,
+          id: res.setting.id,
+        });
+      });
     } else {
       this.pageTitle = 'Create Blog';
     }
@@ -68,7 +67,6 @@ export class ConfiguracionComponent implements OnInit {
       telTesoreria: [''],
       telTesActivo: [''],
     });
-
   }
 
   onSelectedFile(event) {
@@ -78,26 +76,58 @@ export class ConfiguracionComponent implements OnInit {
     }
   }
 
-  get direccion() { return this.configForm.get('direccion'); }
-  get telefono() { return this.configForm.get('telefono'); }
-  get email() { return this.configForm.get('email'); }
-  get telefonoActivo() { return this.configForm.get('telefonoActivo'); }
-  get telPresidencia() { return this.configForm.get('telPresidencia'); }
-  get telPresActivo() { return this.configForm.get('telPresActivo'); }
-  get telSecretaria() { return this.configForm.get('telSecretaria'); }
-  get telSecActivo() { return this.configForm.get('telSecActivo'); }
-  get telTesoreria() { return this.configForm.get('telTesoreria'); }
-  get telTesActivo() { return this.configForm.get('telTesActivo'); }
+  get direccion() {
+    return this.configForm.get('direccion');
+  }
+  get telefono() {
+    return this.configForm.get('telefono');
+  }
+  get email() {
+    return this.configForm.get('email');
+  }
+  get telefonoActivo() {
+    return this.configForm.get('telefonoActivo');
+  }
+  get telPresidencia() {
+    return this.configForm.get('telPresidencia');
+  }
+  get telPresActivo() {
+    return this.configForm.get('telPresActivo');
+  }
+  get telSecretaria() {
+    return this.configForm.get('telSecretaria');
+  }
+  get telSecActivo() {
+    return this.configForm.get('telSecActivo');
+  }
+  get telTesoreria() {
+    return this.configForm.get('telTesoreria');
+  }
+  get telTesActivo() {
+    return this.configForm.get('telTesActivo');
+  }
 
-  onSubmit () {
+  onSubmit() {
     const formData = new FormData();
     formData.append('direccion', this.configForm.get('direccion').value);
     formData.append('email', this.configForm.get('email').value);
     formData.append('telefono', this.configForm.get('telefono').value);
-    formData.append('telefonoActivo', this.configForm.get('telefonoActivo').value);
-    formData.append('telPresidencia', this.configForm.get('telPresidencia').value);
-    formData.append('telPresActivo', this.configForm.get('telPresActivo').value);
-    formData.append('telSecretaria', this.configForm.get('telSecretaria').value);
+    formData.append(
+      'telefonoActivo',
+      this.configForm.get('telefonoActivo').value
+    );
+    formData.append(
+      'telPresidencia',
+      this.configForm.get('telPresidencia').value
+    );
+    formData.append(
+      'telPresActivo',
+      this.configForm.get('telPresActivo').value
+    );
+    formData.append(
+      'telSecretaria',
+      this.configForm.get('telSecretaria').value
+    );
     formData.append('telSecActivo', this.configForm.get('telSecActivo').value);
     formData.append('telTesoreria', this.configForm.get('telTesoreria').value);
     formData.append('telTesActivo', this.configForm.get('telTesActivo').value);
@@ -106,25 +136,53 @@ export class ConfiguracionComponent implements OnInit {
 
     if (id) {
       this.configuracionService.updateSetting(formData, +id).subscribe(
-        (res:any) => {
+        (res: any) => {
           if (res.status === 'error') {
-            this.uploadError = res.message;
+            // this.uploadError = res.message;
+            Swal.fire({
+              position: 'top-end',
+              icon: 'warning',
+              title: res.message,
+              showConfirmButton: false,
+              timer: 1500,
+            });
           } else {
+            Swal.fire({
+              position: 'top-end',
+              icon: 'success',
+              title: res.message,
+              showConfirmButton: false,
+              timer: 1500,
+            });
             this.router.navigate(['/dashboard/settings']);
           }
         },
-        error => this.error = error
+        (error) => (this.error = error)
       );
     } else {
       this.configuracionService.createSetting(formData).subscribe(
-        (res:any) => {
+        (res: any) => {
           if (res.status === 'error') {
-            this.uploadError = res.message;
+            // this.uploadError = res.message;
+            Swal.fire({
+              position: 'top-end',
+              icon: 'warning',
+              title: res.message,
+              showConfirmButton: false,
+              timer: 1500,
+            });
           } else {
+            Swal.fire({
+              position: 'top-end',
+              icon: 'success',
+              title: res.message,
+              showConfirmButton: false,
+              timer: 1500,
+            });
             this.router.navigate(['/dashboard/settings']);
           }
         },
-        error => this.error = error
+        (error) => (this.error = error)
       );
     }
   }
@@ -133,11 +191,12 @@ export class ConfiguracionComponent implements OnInit {
     this.location.back(); // <-- go back to previous location on cancel
   }
 
-  public onReady( editor ) {
-    editor.ui.getEditableElement().parentElement.insertBefore(
+  public onReady(editor) {
+    editor.ui
+      .getEditableElement()
+      .parentElement.insertBefore(
         editor.ui.view.toolbar.element,
         editor.ui.getEditableElement()
-    );
+      );
   }
-
 }

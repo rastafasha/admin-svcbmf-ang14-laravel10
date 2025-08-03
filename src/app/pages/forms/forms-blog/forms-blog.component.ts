@@ -6,6 +6,7 @@ import { Location } from '@angular/common';
 import { CategoriaService } from 'src/app/services/categoria.service';
 import { Categoria } from 'src/app/models/categoria';
 import { Blog } from 'src/app/models/blog';
+import Swal from 'sweetalert2';
 
 
 
@@ -138,8 +139,22 @@ export class FormsBlogComponent implements OnInit {
       this.blogService.updateBlog(formData, +id).subscribe(
         (res:any) => {
           if (res.status === 'error') {
-            this.uploadError = res.message;
+            // this.uploadError = res.message;
+            Swal.fire({
+                          position: 'top-end',
+                          icon: 'warning',
+                          title: res.message,
+                          showConfirmButton: false,
+                          timer: 1500,
+                        });
           } else {
+            Swal.fire({
+                          position: 'top-end',
+                          icon: 'success',
+                          title: res.message,
+                          showConfirmButton: false,
+                          timer: 1500,
+                        });
             this.router.navigate(['/dashboard/blog']);
           }
         },
@@ -149,8 +164,23 @@ export class FormsBlogComponent implements OnInit {
       this.blogService.createBlog(formData).subscribe(
         (res:any) => {
           if (res.status === 'error') {
-            this.uploadError = res.message;
+            // this.uploadError = res.message;
+            Swal.fire({
+                          position: 'top-end',
+                          icon: 'warning',
+                          title: res.message,
+                          showConfirmButton: false,
+                          timer: 1500,
+                        });
+
           } else {
+            Swal.fire({
+                          position: 'top-end',
+                          icon: 'success',
+                          title: res.message,
+                          showConfirmButton: false,
+                          timer: 1500,
+                        });
             this.router.navigate(['/dashboard/blog']);
           }
         },

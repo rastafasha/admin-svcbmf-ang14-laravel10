@@ -71,7 +71,14 @@ export class RolesViewComponent implements OnInit {
   cambiarRole(user: User){
     this.userService.update(user).subscribe(
       resp =>{ console.log(resp);
-        Swal.fire('Actualizado', `actualizado correctamente`, 'success');
+        // Swal.fire('Actualizado', `actualizado correctamente`, 'success');
+        Swal.fire({
+                      position: 'top-end',
+                      icon: 'success',
+                      title: `actualizado correctamente`,
+                      showConfirmButton: false,
+                      timer: 1500,
+                    });
         this.getUsers();
       }
     )
